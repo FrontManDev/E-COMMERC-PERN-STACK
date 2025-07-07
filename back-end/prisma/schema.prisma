@@ -13,6 +13,11 @@ enum UserRole {
   ADMIN
 }
 
+enum UserStatus {
+  BLOCK
+  ONLINE
+  OFFLINE
+}
 model Users{
   id String @id @default(uuid())
   FirstName String
@@ -22,4 +27,5 @@ model Users{
   Password String
   ProfileImage   String
   Role UserRole @default(USER)
+  Status  UserStatus @default(OFFLINE)
 }
