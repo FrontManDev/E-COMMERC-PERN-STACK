@@ -11,9 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 const singeupRoute = require('./route/SingeUpRoute');
 //activate the singeproute
 const loginRoute = require('./route/LoginRoute');
+//activate the updateprofile route
+const updateprofile = require('./route/Updateprofileroute');
 app.use('/api',loginRoute);
 app.use('/api',singeupRoute);
-
+app.use('/api',updateprofile);
 app.listen(process.env.PORT, () => {
     console.log(`Server running at http://localhost:${process.env.PORT}`);
 });
