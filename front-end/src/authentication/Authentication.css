@@ -1,0 +1,250 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Authentication.css */
+
+.fom-container {
+    width: 750px;
+    margin: 2rem auto;
+    padding: 2.5rem;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.08);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.fom-container h2 {
+    color: #111827;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.fom-container > p {
+    color: #6b7280;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.login-social-media-accounts {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.login-social-media-accounts button {
+    flex: 1;
+    padding: 0.8rem;
+    border-radius: 10px;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #374151;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+    font-size: 0.9rem;
+}
+
+.login-social-media-accounts button:hover {
+    background: #f9fafb;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.login-social-media-accounts button:first-child {
+    border-color: #e5e7eb;
+    color: #db4437;
+}
+
+.login-social-media-accounts button:last-child {
+    border-color: #e5e7eb;
+    color: #4267B2;
+}
+
+.fom-container > p:last-of-type {
+    position: relative;
+    text-align: center;
+    color: #9ca3af;
+    margin: 2rem 0;
+    font-size: 0.85rem;
+}
+
+.fom-container > p:last-of-type::before,
+.fom-container > p:last-of-type::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: #6b6b6b7a;
+}
+
+
+.fom-container > p:last-of-type::before {
+    left: 0;
+}
+
+.fom-container > p:last-of-type::after {
+    right: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.form-input {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    position: relative;
+}
+
+.form-input-left-right {
+    display: flex;
+    gap: 1rem;
+}
+
+.form-input-left-right .form-input {
+    flex: 1;
+}
+
+.form-input label {
+    font-size: 0.85rem;
+    color: #4b5563;
+    font-weight: 500;
+}
+
+.form-input input {
+    padding: 0.85rem 1rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    transition: all 0.2s ease;
+    background: #f9fafb;
+}
+
+.form-input input:focus {
+    outline: none;
+    border-color: #6366f1;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+.form-input input[type="file"] {
+    display: none;
+}
+
+.fom-container .file-input-form{
+    width: 100%;
+    margin: 5px auto;
+}
+.form-input input[type="file"] + label {
+    background-color: #37415171;
+    font-size: 1.2rem;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid #374151;
+    border: 2px dashed;
+    cursor: pointer;
+}
+.fom-container .form-input .icons{
+    position: absolute;
+    top: 55%;
+    right: 5%;
+    cursor: pointer;
+    color: #4267B2;
+}
+.login, .signe-in, .sigen-in {
+    display: none;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.login.active, .signe-in.active, .sigen-in.active {
+    display: flex;
+    animation: fadeIn 0.4s ease-out;
+}
+
+form p {
+    text-align: center;
+    color: #6b7280;
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+form p span {
+    color: #6366f1;
+    font-weight: 600;
+    cursor: pointer;
+    margin-left: 0.3rem;
+    transition: all 0.2s ease;
+}
+
+form p span:hover {
+    color: #4f46e5;
+    text-decoration: underline;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Submit button - you might want to add one */
+.submit-btn {
+    padding: 1rem;
+    border-radius: 10px;
+    border: none;
+    background: #6366f1;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.submit-btn:hover {
+    background: #4f46e5;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .fom-container {
+        margin: 1rem;
+        padding: 1.75rem;
+        border-radius: 12px;
+        width: 450px;
+    }
+    
+    .form-input-left-right {
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+}
