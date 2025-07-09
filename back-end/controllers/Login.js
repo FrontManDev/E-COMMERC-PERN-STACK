@@ -33,7 +33,7 @@ const Login = async (req, res) => {
         });
         const token =  AccesTokenGenerate(ExisteUser);
         // user login successfully
-        return res.status(200).json({ mesage: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser ,token:token});
+        return res.status(200).json({ message: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser ,token:token});
 
     } catch (error) {
         return res.status(500).json({ message: error.message });

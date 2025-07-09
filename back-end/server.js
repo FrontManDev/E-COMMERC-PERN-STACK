@@ -4,6 +4,9 @@ const express = require('express');
 //create server express
 const app = express();
 
+//cross middleware 
+cors = require('cors');
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 

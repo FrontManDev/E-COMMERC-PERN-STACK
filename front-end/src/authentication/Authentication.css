@@ -173,14 +173,9 @@ form {
     color: #4267B2;
 }
 .login, .signe-in, .sigen-in {
-    display: none;
-    flex-direction: column;
-    gap: 1.25rem;
-}
-
-.login.active, .signe-in.active, .sigen-in.active {
     display: flex;
-    animation: fadeIn 0.4s ease-out;
+    flex-direction: column;
+    gap: 1.5rem;
 }
 
 form p {

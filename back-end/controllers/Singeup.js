@@ -4,20 +4,15 @@ const {AccesTokenGenerate} = require('../util/TokensGenerate');
 const Singeup = async (req, res) => {
     try {
         // destructuring of JSON data 
-        const { FirstName, LastName, Address, Email, Password, ConffirmePassword, Role } = req.body;
+        const { FirstName, LastName, Address, Email, Password } = req.body;
         
         // destructuring of file data
         const ProfileImage  = req.file;
 
 
         // validate required fields
-        if (!FirstName || !LastName || !Address || !Email || !Password || !ConffirmePassword || !Role || !ProfileImage) {
-            return res.status(400).json({ message: "All form fields are required" });
-        }
-
-        // validate password match
-        if (Password !== ConffirmePassword) {
-            return res.status(400).json({ message: "The passwords do not match" });
+        if (!FirstName || !LastName || !Address || !Email || !Password || !ProfileImage) {
+            return res.status(400).json({ Error: "All form fields are required" });
         }
 
         const EmailExiste = await prisma.users.findUnique({where:{
@@ -25,7 +20,7 @@ const Singeup = async (req, res) => {
         }});
 
         if(EmailExiste){
-            return res.status(400).json({message:"this Email is used before"});
+            return res.status(400).json({Error:"this Email is used before"});
         }
         const HashPassword = await bcrypt.hash(Password,10); 
         // create a new user
@@ -36,7 +31,7 @@ const Singeup = async (req, res) => {
                 Address,
                 Email,
                 Password:HashPassword,
-                Role,
+                Role : "USER",
                 ProfileImage: ProfileImage.filename,
                 Status : "ONLINE"
             }
@@ -44,7 +39,7 @@ const Singeup = async (req, res) => {
 
         // verify if user was created
         if (!NewUser) {
-            return res.status(500).json({ message: "Error in database" });
+            return res.status(500).json({ Error: "Error in database" });
         }
         const token =  AccesTokenGenerate(NewUser);
         // user created successfully
@@ -52,7 +47,7 @@ const Singeup = async (req, res) => {
 
     } catch (error) {
         // send the error if it exists
-        return res.status(500).json({ message : error.message });
+        return res.status(500).json({ Error : error.message });
     }
 };
 
