@@ -16,6 +16,9 @@ const singeupRoute = require('./route/SingeUpRoute');
 const loginRoute = require('./route/LoginRoute');
 //activate the updateprofile route
 const updateprofile = require('./route/Updateprofileroute');
+//activate the allusers route 
+const allusrs = require('./route/AllusersRoute');
+app.use('/api',allusrs);
 app.use('/api',loginRoute);
 app.use('/api',singeupRoute);
 app.use('/api',updateprofile);
