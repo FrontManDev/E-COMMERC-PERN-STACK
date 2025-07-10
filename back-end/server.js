@@ -1,15 +1,17 @@
 require('dotenv').config();
+
 //import express framework
 const express = require('express');
+const path = require("path");
 //create server express
 const app = express();
 
+app.use('/usersImage', express.static(path.join(__dirname, 'usersImage')));
 //cross middleware 
 cors = require('cors');
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
 //import singeuproute 
 const singeupRoute = require('./route/SingeUpRoute');
 //activate the singeproute
