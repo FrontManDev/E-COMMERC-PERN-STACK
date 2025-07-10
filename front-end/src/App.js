@@ -4,6 +4,7 @@ import Users from "./admin/pages/Users/Users";
 export default function App() {
   return (
     <div>
+      <SideBar/>
       <Users/>
     </div>
   );
