@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -18,14 +17,37 @@ enum UserStatus {
   ONLINE
   OFFLINE
 }
-model Users{
-  id String @id @default(uuid())
-  FirstName String
-  LastName  String
-  Address  String
-  Email  String @unique
-  Password String
-  ProfileImage   String
-  Role UserRole @default(USER)
-  Status  UserStatus @default(OFFLINE)
+
+model Users {
+  id           String     @id @default(uuid())
+  FirstName    String
+  LastName     String
+  Address      String
+  Email        String     @unique
+  Password     String
+  ProfileImage String
+  Role         UserRole   @default(USER)
+  Status       UserStatus @default(OFFLINE)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @default(now()) @updatedAt
+}
+
+model Products {
+  id          String    @id @default(uuid())
+  Name        String
+  Description String
+  Price       Float
+  Quantity    Int
+  Category    Category? @relation(fields: [categoryId], references: [id])
+  categoryId  String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @default(now())
+}
+
+model Category {
+  id        String     @id @default(uuid())
+  Name      String
+  Products  Products[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
 }
