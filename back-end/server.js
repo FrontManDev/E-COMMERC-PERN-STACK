@@ -23,12 +23,15 @@ const allusrs = require('./route/AllusersRoute');
 const block = require('./route/BlockuserRoute');
 //activate deblock user route
 const deblock = require('./route/DeblockUserRoute');
+//activate the user by id route
+const userbyid = require('./route/UserbyidRoute');
 app.use('/api',allusrs);
 app.use('/api',loginRoute);
 app.use('/api',singeupRoute);
 app.use('/api',updateprofile);
 app.use('/api',block);
 app.use('/api',deblock);
+app.use('/api',userbyid);
 app.listen(process.env.PORT, () => {
     console.log(`Server running at http://localhost:${process.env.PORT}`);
 });
