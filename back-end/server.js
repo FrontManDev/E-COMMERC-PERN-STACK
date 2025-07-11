@@ -25,6 +25,9 @@ const block = require('./route/BlockuserRoute');
 const deblock = require('./route/DeblockUserRoute');
 //activate the user by id route
 const userbyid = require('./route/UserbyidRoute');
+//activate the add products category
+const addcategory = require('./route/AddcategoryRoute');
+app.use('/api',addcategory);
 app.use('/api',allusrs);
 app.use('/api',loginRoute);
 app.use('/api',singeupRoute);

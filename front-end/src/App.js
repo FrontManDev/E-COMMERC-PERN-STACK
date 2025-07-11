@@ -5,7 +5,10 @@ import Profile from "./store/pages/Profile/Profile";
 export default function App() {
   return (
     <div>
-      <Profile id={"5858d0f2-0b84-478a-a52a-4800b06e11a8"}/>
+      <Authentication/>
+      {
+     /* <Profile id={"5858d0f2-0b84-478a-a52a-4800b06e11a8"}/>*/
+      }
     </div>
   );
 }
