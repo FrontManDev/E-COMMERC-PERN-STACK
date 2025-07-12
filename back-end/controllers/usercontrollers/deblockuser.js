@@ -1,4 +1,4 @@
-const prisma = require("../config/database");
+const prisma = require("../../config/database");
 const deblockuser = async (req, res) => {
     try {
         const id = req.params.id;

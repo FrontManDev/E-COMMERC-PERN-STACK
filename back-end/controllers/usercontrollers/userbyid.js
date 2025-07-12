@@ -1,4 +1,4 @@
-const prisma = require("../config/database");
+const prisma = require("../../config/database");
 
 const UserById = async (req,res)=>{
     try{

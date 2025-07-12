@@ -1,7 +1,7 @@
 const prisma = require('../../config/database');
 const categorybyid = async (req,res)=>{
     try{
-        const id = req.params;
+        const id = req.params.id;
         const category = await prisma.category.findFirst({
             where:{
                 id:id

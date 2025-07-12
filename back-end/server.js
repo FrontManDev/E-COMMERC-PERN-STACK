@@ -15,27 +15,27 @@ const singeupRoute = require('./route/SingeUpRoute');
 //activate the singeproute
 const loginRoute = require('./route/LoginRoute');
 //activate the updateprofile route
-const updateprofile = require('./route/Updateprofileroute');
+const updateprofile = require('./route/usersRoute/Updateprofileroute');
 //activate the allusers route 
-const allusrs = require('./route/AllusersRoute');
+const allusrs = require('./route/usersRoute/AllusersRoute');
 //activate block user route
-const block = require('./route/BlockuserRoute');
+const block = require('./route/usersRoute/BlockuserRoute');
 //activate deblock user route
-const deblock = require('./route/DeblockUserRoute');
+const deblock = require('./route/usersRoute/DeblockUserRoute');
 //activate the user by id route
-const userbyid = require('./route/UserbyidRoute');
+const userbyid = require('./route/usersRoute/UserbyidRoute');
 //activate the add products category
-const addcategory = require('./route/AddcategoryRoute');
+const addcategory = require('./route/categoryRoute/AddcategoryRoute');
 //activate the add products route
-const addproducts = require('./route/AddproductsRoute');
+const addproducts = require('./route/productsRoute/AddproductsRoute');
 //activate the all category route
-const allcategory = require('./route/AllcategoryRoute');
+const allcategory = require('./route/categoryRoute/AllcategoryRoute');
 //activate the delete category route 
-const deletcategory = require('./route/DeletecategoryRoute');
+const deletcategory = require('./route/categoryRoute/DeletecategoryRoute');
 //activate the category by id route 
-const categorybyid = require('./route/CategvorybyidRoute');
+const categorybyid = require('./route/categoryRoute/CategorybyidRoute');
 app.use('/api',deletcategory);
-app.use('/api'/categorybyid);
+app.use('/api',categorybyid);
 app.use('/api',allcategory);
 app.use('/api',addproducts);
 app.use('/api',addcategory);

@@ -1,4 +1,4 @@
-const prisma = require('../config/database');
+const prisma = require('../../config/database');
 const addcategory = async (req,res)=>{
     try{
         const {Name} = req.body;
