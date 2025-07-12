@@ -5,11 +5,10 @@ const path = require("path");
 //create server express
 const app = express();
 app.use('/usersImage', express.static(path.join(__dirname, 'usersImage')));
-//cross middleware 
+//cros middleware 
 cors = require('cors');
 app.use(cors());
 app.use(express.json());
-//
 app.use(express.urlencoded({ extended: true }));
 //import singeuproute 
 const singeupRoute = require('./route/SingeUpRoute');
@@ -27,6 +26,9 @@ const deblock = require('./route/DeblockUserRoute');
 const userbyid = require('./route/UserbyidRoute');
 //activate the add products category
 const addcategory = require('./route/AddcategoryRoute');
+//activate the add products route
+const addproducts = require('./route/AddproductsRoute');
+app.use('/api',addproducts);
 app.use('/api',addcategory);
 app.use('/api',allusrs);
 app.use('/api',loginRoute);

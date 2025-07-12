@@ -2,6 +2,12 @@ const prisma = require('../config/database');
 const addcategory = async (req,res)=>{
     try{
         const {Name} = req.body;
+        const IsExiste = await prisma.category.findFirst({where:{
+            Name : Name
+        }});
+        if(IsExiste){
+            return res.status(400).json({mesage:"this category is all ready exsiste"});
+        }
         const category = await prisma.category.create({data:{
             Name : Name
         }});

@@ -9,7 +9,6 @@ const Singeup = async (req, res) => {
         // destructuring of file data
         const ProfileImage  = req.file;
 
-
         // validate required fields
         if (!FirstName || !LastName || !Address || !Email || !Password || !ProfileImage) {
             return res.status(400).json({ Error: "All form fields are required" });
