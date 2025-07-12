@@ -1,4 +1,4 @@
-const {authentication} = require('../middleware/authentications');
+const {authentication} = require('../../middleware/authentications');
 const {addcategory} = require('../controllers/addcategory');
 const express = require('express');
 const route = express.Router();

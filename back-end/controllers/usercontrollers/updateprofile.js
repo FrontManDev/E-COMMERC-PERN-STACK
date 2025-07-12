@@ -1,4 +1,4 @@
-const prisma = require('../config/database');
+const prisma = require('../../config/database');
 const bcrypt = require('bcrypt');
 const updateprofile = async (req, res) => {
     try {

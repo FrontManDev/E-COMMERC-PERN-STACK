@@ -1,4 +1,4 @@
-const prisma = require('../config/database');
+const prisma = require('../../config/database');
 const addproducts = async (req, res) => {
     try {
         const { Name, Description, Price, Quantity, categoryId } = req.body;
