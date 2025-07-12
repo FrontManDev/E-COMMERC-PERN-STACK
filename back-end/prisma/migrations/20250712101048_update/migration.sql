@@ -28,7 +28,8 @@ CREATE TABLE "Products" (
     "Description" TEXT NOT NULL,
     "Price" DOUBLE PRECISION NOT NULL,
     "Quantity" INTEGER NOT NULL,
-    "categoryId" TEXT,
+    "categoryId" TEXT NOT NULL,
+    "ProductsImage" TEXT NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
 
@@ -49,4 +50,4 @@ CREATE TABLE "Category" (
 CREATE UNIQUE INDEX "Users_Email_key" ON "Users"("Email");
 
 -- AddForeignKey
-ALTER TABLE "Products" ADD CONSTRAINT "Products_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE "Products" ADD CONSTRAINT "Products_categoryId_fkey" FOREIGN KEY ("categoryId") REFERENCES "Category"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
