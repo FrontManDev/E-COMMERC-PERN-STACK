@@ -34,6 +34,21 @@ const allcategory = require('./route/categoryRoute/AllcategoryRoute');
 const deletcategory = require('./route/categoryRoute/DeletecategoryRoute');
 //activate the category by id route 
 const categorybyid = require('./route/categoryRoute/CategorybyidRoute');
+//activate the update products route
+const updateproduct = require('./route/productsRoute/UpdateproductsRoute');
+//activate the all products route
+const allproducts = require('./route/productsRoute/AllproductsRoute');
+//activate the product by id
+const productid = require('./route/productsRoute/ProductsbyidRoute');
+//activate the delete product
+const deletproduct = require('./route/productsRoute/DeleteproductRoute');
+//activate the product by categoy
+const productbycategory = require('./route/productsRoute/ProductsbycategoryRoute');
+app.use('/api',productbycategory);
+app.use('/api',deletproduct);
+app.use('/api',productid);
+app.use('/api',allproducts);
+app.use('/api',updateproduct);
 app.use('/api',deletcategory);
 app.use('/api',categorybyid);
 app.use('/api',allcategory);
