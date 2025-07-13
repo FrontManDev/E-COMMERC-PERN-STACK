@@ -3,15 +3,15 @@ const updateproducts = async (req, res) => {
     try {
         const { Name, Description, Price, Quantity, Category, categoryId } = req.body;
         const file = req.files;
-        const { id } = req.prams;
+        const { id } = req.params;
         if (!Name && !Description && !Price && !Quantity && !Category && !categoryId && file.length === 0) {
             return res.status(400).json({ message: "you have to update atleast one information about the product" });
         }
         const UpdateProduct = {};
         UpdateProduct.Name = Name;
         UpdateProduct.Description = Description;
-        UpdateProduct.Price = Price;
-        UpdateProduct.Quantity = Quantity;
+        UpdateProduct.Price = parseFloat(Price);
+        UpdateProduct.Quantity = parseInt(Quantity);
         UpdateProduct.Category = Category;
         UpdateProduct.categoryId = categoryId;
 

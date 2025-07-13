@@ -9,7 +9,7 @@ const addproducts = async (req, res) => {
         const IsExiste = await prisma.products.findFirst({where:{
             Name:Name
         }});
-        if(Name){
+        if(IsExiste){
             return res.status(400).json({message:"this product is allready existe"});
         }
         const image = files.map((file)=>file.filename);
