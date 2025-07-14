@@ -3,5 +3,6 @@ const express = require('express');
 const route = express.Router();
 const {updateprofile} = require('../../controllers/usercontrollers/updateprofile');
 const {authentication} = require('../../middleware/authentications');
-route.put('/updateprofile/:id',uploadProfile.single('file'),authentication,updateprofile);
+const {IsAdmin} = require('../../middleware/Role');
+route.put('/updateprofile/:id',authentication,IsAdmin,uploadProfile.single('file'),updateprofile);
 module.exports = route;

@@ -1,11 +1,11 @@
 import Authentication from "./authentication/Authentication";
-import SideBar from "./admin/SideBar/SideBar";
-import Users from "./admin/pages/Users/Users";
-import AddCategory from "./admin/pages/AddCategory/AddCategoy";
+import SideBar from "./components/SideBar/SideBar";
+import Users from "./pages/admin/Users/Users";
 export default function App() {
   return (
     <div>
-      <Authentication/>
+      <SideBar/>
+      <Users/>
     </div>
   );
 }
