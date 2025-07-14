@@ -1,5 +1,5 @@
 import axios from "axios";
-import './Users.css';
+import styles from './Users.module.css';
 import { useEffect, useState } from "react";
 import { AiOutlineUserSwitch } from "react-icons/ai";
 import { RiUserSharedLine } from "react-icons/ri";
@@ -14,7 +14,8 @@ export default function Users() {
     const [BlockUsers, SetBlockUsers] = useState(0);
     const [OnlineUsers, SetOnlineUsers] = useState(0);
     const [OfflineUsers, SetOfflineUsers] = useState(0);
-    const Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7ImlkIjoiNTg1OGQwZjItMGI4NC00NzhhLWE1MmEtNDgwMGIwNmUxMWE4IiwiRmlyc3ROYW1lIjoiaGFtaWRhIiwiTGFzdE5hbWUiOiJhYmRlbGthcmltIiwiQWRkcmVzcyI6ItmI2YfYsdin2YYiLCJFbWFpbCI6ImJvdWNoYW1hc29oYWliZUBnbWFpbC5jb20iLCJQYXNzd29yZCI6IiQyYiQxMCRPMzZxbTN1ZGguenkwaFN2TlNHajRPMTJuT3Yyb0JkU1FYUFdBbkMuR2xHb3Vkb3Rxd0tqVyIsIlByb2ZpbGVJbWFnZSI6InByb2ZpbGVfMTgzNzQ4LmpwZyIsIlJvbGUiOiJVU0VSIiwiU3RhdHVzIjoiT0ZGTElORSJ9LCJpYXQiOjE3NTIxNjEzMTcsImV4cCI6MTc1MjE2NDkxN30.WszWUdUKO3FK6mEBE9q-oGjNMsym_eP0MMWqyd-a5Ew";
+    const Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7ImlkIjoiOGJmYmQ0N2MtODc5MC00YTQ5LTliYzMtMTBiYzhhY2JkMTY0IiwiRmlyc3ROYW1lIjoiaGFtaWRhIiwiTGFzdE5hbWUiOiJhYmRlbGthcmltIiwiQWRkcmVzcyI6ItmI2YfYsdin2YYiLCJFbWFpbCI6ImhhbWlkYWthaW02N0BnbWFpbC5jb20iLCJQYXNzd29yZCI6IiQyYiQxMCR5eXZWM1AvUXRONEFPVklITjM1L3FPamxSbHM1T2s5WUxoeGl0V0xOYVZpNnpwVWVabnoyTyIsIlByb2ZpbGVJbWFnZSI6InByb2ZpbGVfMzkxMzMzLmpwZyIsIlJvbGUiOiJVU0VSIiwiU3RhdHVzIjoiT05MSU5FIiwiY3JlYXRlZEF0IjoiMjAyNS0wNy0xMlQxMDoxMzozMy44NDVaIiwidXBkYXRlZEF0IjoiMjAyNS0wNy0xM1QxMjo0ODozMC40MzBaIn0sImlhdCI6MTc1MjUwMjM2NCwiZXhwIjoxNzUyNTA1OTY0fQ.Y2B6uAjzuyi9kzeORKu3EvALmBVQFHwU-AKryzigYj8";
+
     async function FetchUsers() {
         try {
             SetLoading(true);
@@ -38,6 +39,7 @@ export default function Users() {
             SetLoading(false);
         }
     }
+
     async function Block(id) {
         try {
             if (window.confirm("Are you sure you want to block this user?")) {
@@ -56,6 +58,7 @@ export default function Users() {
             SetError(error.message);
         }
     }
+
     async function Deblock(id) {
         try {
             if (window.confirm("Are you sure you want to deblock this user?")) {
@@ -74,32 +77,35 @@ export default function Users() {
             SetError(error.message);
         }
     }
+
     useEffect(() => {
         FetchUsers();
     }, []);
-    if (Loading) return <div className="loading">...Loading</div>;
-    if (Error) return <div className="error">{Error}</div>;
+
+    if (Loading) return <div className={styles.loading}>...Loading</div>;
+    if (Error) return <div className={styles.error}>{Error}</div>;
+
     return (
-        <div className="users-container">
-            <div className="users-type">
-                <div className="users online-users">
+        <div className={styles.usersContainer}>
+            <div className={styles.usersType}>
+                <div className={`${styles.users} ${styles.onlineUsers}`}>
                     <h3>Online users</h3>
                     <h2><AiOutlineUserSwitch />{OnlineUsers}</h2>
                 </div>
-                <div className="users offline-users">
+                <div className={`${styles.users} ${styles.offlineUsers}`}>
                     <h3>Offline users</h3>
                     <h2><span><RiUserSharedLine /></span>{OfflineUsers}</h2>
                 </div>
-                <div className="users block-users">
+                <div className={`${styles.users} ${styles.blockUsers}`}>
                     <h3>blocked users</h3>
                     <h2><span><FaUserSlash /></span>{BlockUsers}</h2>
                 </div>
-                <div className="users total-users">
+                <div className={`${styles.users} ${styles.totalUsers}`}>
                     <h3>Total users</h3>
                     <h2><span><HiUsers /></span>{TotalUsers}</h2>
                 </div>
             </div>
-            <table>
+            <table className={styles.usersTable}>
                 <thead>
                     <tr>
                         <th>Image</th>
@@ -112,27 +118,25 @@ export default function Users() {
                     </tr>
                 </thead>
                 <tbody>
-                    {
-                        AllUsers.map((user, index) => (
-                            <tr key={user.id}>
-                                <td><img src={`http://localhost:5000/usersImage/${user.ProfileImage}`} /></td>
-                                <td>{user.FirstName}</td>
-                                <td>{user.LastName}</td>
-                                <td>{user.Address}</td>
-                                <td>{user.Email}</td>
-                                <td>{user.Status}</td>
-                                <td>
-                                    <button onClick={() => {
-                                        user.Status === "BLOCK" ? Deblock(user.id) : Block(user.id);
-                                    }}>
-                                        {user.Status === "BLOCK" ? "DEBLOCK" : "BLOCK"}
-                                    </button>
-                                </td>
-                            </tr>
-                        ))
-                    }
+                    {AllUsers.map((user) => (
+                        <tr key={user.id}>
+                            <td><img src={`http://localhost:5000/usersImage/${user.ProfileImage}`} alt="User" /></td>
+                            <td>{user.FirstName}</td>
+                            <td>{user.LastName}</td>
+                            <td>{user.Address}</td>
+                            <td>{user.Email}</td>
+                            <td data-status={user.Status.toLowerCase()}>{user.Status}</td>
+                            <td>
+                                <button onClick={() => {
+                                    user.Status === "BLOCK" ? Deblock(user.id) : Block(user.id);
+                                }}>
+                                    {user.Status === "BLOCK" ? "DEBLOCK" : "BLOCK"}
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                 </tbody>
             </table>
-        </div >
+        </div>
     )
 }

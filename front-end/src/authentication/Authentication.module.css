@@ -6,8 +6,7 @@
 }
 
 /* Authentication.css */
-
-.fom-container {
+.container {
     width: 750px;
     margin: 2rem auto;
     padding: 2.5rem;
@@ -18,7 +17,7 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-.fom-container h2 {
+.container h2 {
     color: #111827;
     text-align: center;
     margin-bottom: 0.5rem;
@@ -27,7 +26,7 @@
     letter-spacing: -0.5px;
 }
 
-.fom-container > p {
+.container > p:first-of-type {
     color: #6b7280;
     text-align: center;
     margin-bottom: 2rem;
@@ -35,46 +34,7 @@
     line-height: 1.5;
 }
 
-.login-social-media-accounts {
-    display: flex;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-}
-
-.login-social-media-accounts button {
-    flex: 1;
-    padding: 0.8rem;
-    border-radius: 10px;
-    border: 1px solid #e5e7eb;
-    background: white;
-    color: #374151;
-    font-weight: 500;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: all 0.2s ease;
-    font-size: 0.9rem;
-}
-
-.login-social-media-accounts button:hover {
-    background: #f9fafb;
-    transform: translateY(-1px);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-}
-
-.login-social-media-accounts button:first-child {
-    border-color: #e5e7eb;
-    color: #db4437;
-}
-
-.login-social-media-accounts button:last-child {
-    border-color: #e5e7eb;
-    color: #4267B2;
-}
-
-.fom-container > p:last-of-type {
+.divider {
     position: relative;
     text-align: center;
     color: #9ca3af;
@@ -82,8 +42,8 @@
     font-size: 0.85rem;
 }
 
-.fom-container > p:last-of-type::before,
-.fom-container > p:last-of-type::after {
+.divider::before,
+.divider::after {
     content: "";
     position: absolute;
     top: 50%;
@@ -92,12 +52,11 @@
     background: #6b6b6b7a;
 }
 
-
-.fom-container > p:last-of-type::before {
+.divider::before {
     left: 0;
 }
 
-.fom-container > p:last-of-type::after {
+.divider::after {
     right: 0;
 }
 
@@ -107,29 +66,29 @@ form {
     gap: 1.25rem;
 }
 
-.form-input {
+.formInput {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     position: relative;
 }
 
-.form-input-left-right {
+.formInputRow {
     display: flex;
     gap: 1rem;
 }
 
-.form-input-left-right .form-input {
+.formInputRow .formInput {
     flex: 1;
 }
 
-.form-input label {
+.formInput label {
     font-size: 0.85rem;
     color: #4b5563;
     font-weight: 500;
 }
 
-.form-input input {
+.formInput input {
     padding: 0.85rem 1rem;
     border: 1px solid #e5e7eb;
     border-radius: 10px;
@@ -138,22 +97,23 @@ form {
     background: #f9fafb;
 }
 
-.form-input input:focus {
+.formInput input:focus {
     outline: none;
     border-color: #6366f1;
     background: white;
     box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
 }
 
-.form-input input[type="file"] {
+.formInput input[type="file"] {
     display: none;
 }
 
-.fom-container .file-input-form{
+.fileInput {
     width: 100%;
     margin: 5px auto;
 }
-.form-input input[type="file"] + label {
+
+.fileInput input[type="file"] + label {
     background-color: #37415171;
     font-size: 1.2rem;
     height: 50px;
@@ -161,18 +121,19 @@ form {
     justify-content: center;
     align-items: center;
     border-radius: 8px;
-    border: 2px solid #374151;
-    border: 2px dashed;
+    border: 2px dashed #374151;
     cursor: pointer;
 }
-.fom-container .form-input .icons{
+
+.icon {
     position: absolute;
     top: 55%;
     right: 5%;
     cursor: pointer;
     color: #4267B2;
 }
-.login, .signe-in, .sigen-in {
+
+.login, .signeIn {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
@@ -198,19 +159,7 @@ form p span:hover {
     text-decoration: underline;
 }
 
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Submit button - you might want to add one */
-.submit-btn {
+.submitBtn {
     padding: 1rem;
     border-radius: 10px;
     border: none;
@@ -223,22 +172,21 @@ form p span:hover {
     margin-top: 0.5rem;
 }
 
-.submit-btn:hover {
+.submitBtn:hover {
     background: #4f46e5;
     transform: translateY(-1px);
     box-shadow: 0 2px 10px rgba(79, 70, 229, 0.3);
 }
 
-/* Responsive adjustments */
 @media (max-width: 600px) {
-    .fom-container {
+    .container {
         margin: 1rem;
         padding: 1.75rem;
         border-radius: 12px;
         width: 450px;
     }
     
-    .form-input-left-right {
+    .formInputRow {
         flex-direction: column;
         gap: 1.25rem;
     }
