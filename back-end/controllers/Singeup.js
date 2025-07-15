@@ -1,6 +1,7 @@
 const prisma = require("../config/database");
 const bcrypt = require('bcrypt');
-const { AccesTokenGenerate } = require('../util/TokensGenerate');
+const { AccesTokenGenerate } = require('../util/AccesTokensGenerate');
+const { RefrechTokensGenerate } = require('../util/RefrechTokensGenerate');
 const Singeup = async (req, res) => {
     try {
         // destructuring of JSON data 
@@ -42,15 +43,16 @@ const Singeup = async (req, res) => {
         if (!NewUser) {
             return res.status(500).json({ Error: "Error in database" });
         }
-        const token = AccesTokenGenerate(NewUser);
+        const accestoken = AccesTokenGenerate(NewUser);
+        const refrechtoken = RefrechTokensGenerate(NewUser);
         // user created successfully
-        res.cookie("token", token, {
+        res.cookie("refrechtoken", refrechtoken, {
             httpOnly: true,
             secure: false,
             sameSite: "Lax",
             maxAge: 60 * 60 * 1000,
-        });
-        return res.status(200).json({ message: "The user was added successfully", NewUser, token: token });
+        }); 
+        return res.status(200).json({ message: "The user was added successfully", NewUser, accestoken: accestoken });
 
     } catch (error) {
         // send the error if it exists

@@ -1,6 +1,7 @@
 const prisma = require("../config/database");
 const bcrypt = require("bcrypt");
-const { AccesTokenGenerate } = require('../util/TokensGenerate');
+const { AccesTokenGenerate } = require('../util/AccesTokensGenerate');
+const { RefrechTokensGenerate } = require('../util/RefrechTokensGenerate');
 const Login = async (req, res) => {
     try {
         const { Email, Password } = req.body;
@@ -31,15 +32,16 @@ const Login = async (req, res) => {
                 Status: "ONLINE"
             }
         });
-        const token = AccesTokenGenerate(ExisteUser);
-        // user login successfully
-        res.cookie("token", token, {
+        const accestoken = AccesTokenGenerate(ExisteUser);
+        const refrechtoken = RefrechTokensGenerate(ExisteUser);
+        // user created successfully
+        res.cookie("refrechtoken", refrechtoken, {
             httpOnly: true,
             secure: false,
             sameSite: "Lax",
             maxAge: 60 * 60 * 1000,
         });
-        return res.status(200).json({ message: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser, token: token });
+        return res.status(200).json({ message: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser, accestoken: accestoken });
 
     } catch (error) {
         return res.status(500).json({ message: error.message });

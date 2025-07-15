@@ -50,6 +50,9 @@ const deletproduct = require('./route/productsRoute/DeleteproductRoute');
 const productbycategory = require('./route/productsRoute/ProductsbycategoryRoute');
 //activate the me route
 const me = require('./route/me');
+//activate refrech token route
+const refrechtoken = require('./route/RefreshtokenRoute');
+app.use('/api',refrechtoken);
 app.use('/api',me);
 app.use('/api',productbycategory);
 app.use('/api',deletproduct);
