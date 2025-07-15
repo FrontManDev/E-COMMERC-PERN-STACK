@@ -48,6 +48,9 @@ const productid = require('./route/productsRoute/ProductsbyidRoute');
 const deletproduct = require('./route/productsRoute/DeleteproductRoute');
 //activate the product by categoy
 const productbycategory = require('./route/productsRoute/ProductsbycategoryRoute');
+//activate the me route
+const me = require('./route/me');
+app.use('/api',me);
 app.use('/api',productbycategory);
 app.use('/api',deletproduct);
 app.use('/api',productid);
