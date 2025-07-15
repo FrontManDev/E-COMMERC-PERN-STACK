@@ -10,7 +10,7 @@ function authentication(req, res, next) {
 
     try {
         const decoded = JWT.verify(token, process.env.JWT_ACESS_TOKEN_SECRET_KEY);
-        req.user = decoded;
+        req.user = decoded.User;
         next();
     } catch (error) {
         return res.status(401).json({ message: "Invalid or expired token" });

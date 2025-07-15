@@ -8,7 +8,7 @@ const categorybyid = async (req,res)=>{
             }
         });
         if(!category){
-            return res.status(500).josn({message:"error in database"});
+            return res.status(500).json({message:"error in database"});
         }
 
         return res.status(200).json({message:"the cateory",category:category});

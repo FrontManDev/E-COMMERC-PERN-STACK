@@ -1,6 +1,6 @@
 const prisma = require("../config/database");
 const bcrypt = require("bcrypt");
-const {AccesTokenGenerate} = require('../util/TokensGenerate');
+const { AccesTokenGenerate } = require('../util/TokensGenerate');
 const Login = async (req, res) => {
     try {
         const { Email, Password } = req.body;
@@ -17,7 +17,7 @@ const Login = async (req, res) => {
             return res.status(400).json({ message: "inccorect password or email" });
         }
 
-        const IsMatch = await bcrypt.compare(Password,ExisteUser.Password);
+        const IsMatch = await bcrypt.compare(Password, ExisteUser.Password);
 
         if (!IsMatch) {
             return res.status(400).json({ message: "inccorect password or email" });
@@ -25,15 +25,21 @@ const Login = async (req, res) => {
 
         await prisma.users.update({
             where: {
-                Email : Email
+                Email: Email
             },
             data: {
                 Status: "ONLINE"
             }
         });
-        const token =  AccesTokenGenerate(ExisteUser);
+        const token = AccesTokenGenerate(ExisteUser);
         // user login successfully
-        return res.status(200).json({ message: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser ,token:token});
+        res.cookie("token", token, {
+            httpOnly: true,
+            secure: false,
+            sameSite: "Lax",
+            maxAge: 60 * 60 * 1000,
+        });
+        return res.status(200).json({ message: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser, token: token });
 
     } catch (error) {
         return res.status(500).json({ message: error.message });

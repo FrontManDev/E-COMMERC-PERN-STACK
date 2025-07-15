@@ -2,20 +2,24 @@ require('dotenv').config();
 //import express framework
 const express = require('express');
 const path = require("path");
+const cookiedParser = require('cookie-parser');
 //create server express
 const app = express();
 app.use('/usersImage', express.static(path.join(__dirname, 'usersImage')));
 //cros middleware 
-cors = require('cors');
-app.use(cors());
+const cors = require('cors');
+app.use(cors({
+    origin:'http://localhost:3000',
+    credentials:true,
+    methods:['GET','POST','PUT','DELETE']
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cookiedParser());
 //import singeuproute 
 const singeupRoute = require('./route/SingeUpRoute');
 //activate the singeproute
 const loginRoute = require('./route/LoginRoute');
-//activate the updateprofile route
-const updateprofile = require('./route/usersRoute/Updateprofileroute');
 //activate the allusers route 
 const allusrs = require('./route/usersRoute/AllusersRoute');
 //activate block user route
@@ -57,7 +61,6 @@ app.use('/api',addcategory);
 app.use('/api',allusrs);
 app.use('/api',loginRoute);
 app.use('/api',singeupRoute);
-app.use('/api',updateprofile);
 app.use('/api',block);
 app.use('/api',deblock);
 app.use('/api',userbyid);
