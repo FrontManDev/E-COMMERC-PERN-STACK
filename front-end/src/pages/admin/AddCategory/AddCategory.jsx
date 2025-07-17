@@ -1,4 +1,4 @@
-import './AddCategory.css';
+import './AddCategory.module.css';
 export default function AddCategory(){
     return(
         <div>

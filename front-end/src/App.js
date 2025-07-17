@@ -1,11 +1,9 @@
 import Authentication from "./authentication/Authentication";
-import SideBar from "./components/SideBar/SideBar";
-import Users from "./pages/admin/Users/Users";
+import AdminLayout from "./layouts/AdminLayout";
 export default function App() {
   return (
-    <div>
-      <SideBar/>
-      <Users/>
-    </div>
+    <>
+      <AdminLayout />
+    </>
   );
 }
