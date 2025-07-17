@@ -1,5 +1,6 @@
 const express = require('express');
 const route = express.Router();
-const {me} = require('../controllers/mecontroller');
-route.get('/me',me);
+const {logout} = require('../controllers/logout');
+route.post('/logout',logout);
+
 module.exports = route;
