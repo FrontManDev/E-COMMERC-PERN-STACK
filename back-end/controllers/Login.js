@@ -34,6 +34,12 @@ const Login = async (req, res) => {
         });
         const accestoken = AccesTokenGenerate(ExisteUser);
         const refrechtoken = RefrechTokensGenerate(ExisteUser);
+        res.cookie("accestoken",accestoken,{
+            httpOnly:true,
+            secure:false,
+            sameSite:"Lax",
+            maxAge: 15 * 60 * 1000
+        });
         // user created successfully
         res.cookie("refrechtoken", refrechtoken, {
             httpOnly: true,
@@ -41,7 +47,7 @@ const Login = async (req, res) => {
             sameSite: "Lax",
             maxAge: 60 * 60 * 1000,
         });
-        return res.status(200).json({ message: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser, accestoken: accestoken });
+        return res.status(200).json({ message: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser});
 
     } catch (error) {
         return res.status(500).json({ message: error.message });

@@ -1,11 +1,8 @@
 import styles from './Authentication.module.css';
 import { useState } from "react";
-import { FaGoogle } from "react-icons/fa";
-import { FaFacebookF } from "react-icons/fa";
 import { IoEyeSharp } from "react-icons/io5";
 import { BsEyeSlashFill } from "react-icons/bs";
 import axios from 'axios';
-
 export default function Authentication() {
     const [IsLogin, SetIsLogin] = useState(true);
     const [ShowPassword, SetShowPassword] = useState([false, false, false]);
@@ -25,7 +22,7 @@ export default function Authentication() {
                 SingeData.append("ProfileImage", SingeFormData.file);
                 const response = await axios.post("http://localhost:5000/api/singeup", SingeData);
                 const { message, NewUser, token } = response.data;
-                console.log(token);
+                localStorage.setItem("token",token);
                 console.log(NewUser);
                 alert(message);
             }
@@ -43,6 +40,7 @@ export default function Authentication() {
             const { message, ExisteUser, token } = response.data;
             console.log(token);
             console.log(ExisteUser);
+            localStorage.setItem("token",token);
             alert(message);
         } catch (Error) {
             if (Error.response && Error.response.data) {

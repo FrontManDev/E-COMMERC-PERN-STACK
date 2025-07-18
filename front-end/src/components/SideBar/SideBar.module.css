@@ -13,9 +13,10 @@
     border-right: 2px solid #6366f1;
     height: 100vh;
     padding: 20px;
+    z-index: 2;
 }
 
-.SideBar h3 {
+.SideBar .title {
     display: flex;
     justify-content: start;
     align-items: center;
@@ -25,7 +26,7 @@
     margin-bottom: 20px;
 }
 
-.SideBar ul {
+.SideBar .ul {
     list-style: none;
     display: flex;
     flex-direction: column;
@@ -59,4 +60,29 @@
 .SideBar ul a.active {
     background-color: #3236ff;
     color: white;
+}
+
+.SideBar .button{
+    width: 80%;
+    position: absolute;
+    bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    padding: 7px;
+    border-radius: 10px;
+    border: 1px solid red;
+    color: red;
+    background-color: pink;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.SideBar .button .icon{
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.SideBar .button:hover{
+    opacity: 0.7;
 }
