@@ -1,12 +1,12 @@
 const prisma = require('../config/database');
 const refreshtokencontrollers = async (req, res) => {
-    const refrecktoken = req.cookies.refrechtoken;
+    const refrechtoken = req.cookies.refrechtoken;
     const JWT = require('jsonwebtoken');
-    if (!refrecktoken) {
+    if (!refrechtoken) {
         return res.status(401).json({ message: "refrech tooken not found" });
     }
     try {
-        const decoded = JWT.verify(refrecktoken, process.env.JWT_REFRECH_TOKEN_SECRET_KEY);
+        const decoded = JWT.verify(refrechtoken, process.env.JWT_REFRECH_TOKEN_SECRET_KEY);
         const user = await prisma.users.findUnique({
             where: {
                 id: decoded.id

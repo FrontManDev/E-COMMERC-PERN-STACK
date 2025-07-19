@@ -46,19 +46,13 @@ const Singeup = async (req, res) => {
         const accestoken = AccesTokenGenerate(NewUser);
         const refrechtoken = RefrechTokensGenerate(NewUser);
         // user created successfully
-        res.cookie("accestoken",accestoken,{
-            httpOnly:true,
-            secure:false,
-            sameSite:"Lax",
-            maxAge: 15 * 60 * 1000
-        })
         res.cookie("refrechtoken", refrechtoken, {
             httpOnly: true,
             secure: false,
             sameSite: "Lax",
             maxAge: 60 * 60 * 1000,
         }); 
-        return res.status(200).json({ message: "The user was added successfully", NewUser});
+        return res.status(200).json({ message: "The user was added successfully", NewUser, token: accestoken });
 
     } catch (error) {
         // send the error if it exists

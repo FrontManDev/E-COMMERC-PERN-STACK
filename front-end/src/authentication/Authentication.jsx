@@ -2,7 +2,7 @@ import styles from './Authentication.module.css';
 import { useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import { BsEyeSlashFill } from "react-icons/bs";
-import axios from 'axios';
+import AxiosInstance from '../axiosInterceptore/axiosInterceptoreToken';
 export default function Authentication() {
     const [IsLogin, SetIsLogin] = useState(true);
     const [ShowPassword, SetShowPassword] = useState([false, false, false]);
@@ -20,7 +20,7 @@ export default function Authentication() {
                 SingeData.append("Email", SingeFormData.Email);
                 SingeData.append("Password", SingeFormData.Password);
                 SingeData.append("ProfileImage", SingeFormData.file);
-                const response = await axios.post("http://localhost:5000/api/singeup", SingeData);
+                const response = await AxiosInstance.post("http://localhost:5000/api/singeup", SingeData);
                 const { message, NewUser, token } = response.data;
                 localStorage.setItem("token",token);
                 console.log(NewUser);
@@ -36,7 +36,7 @@ export default function Authentication() {
 
     async function Login() {
         try {
-            const response = await axios.post("http://localhost:5000/api/login", LoginFromData);
+            const response = await AxiosInstance.post("http://localhost:5000/api/login", LoginFromData);
             const { message, ExisteUser, token } = response.data;
             console.log(token);
             console.log(ExisteUser);

@@ -5,7 +5,7 @@ import { AiOutlineUserSwitch } from "react-icons/ai";
 import { RiUserSharedLine } from "react-icons/ri";
 import { FaUserSlash } from "react-icons/fa6";
 import { HiUsers } from "react-icons/hi";
-
+import AxiosInstance from "../../../axiosInterceptore/axiosInterceptoreToken";
 export default function Users() {
     const [AllUsers, SetAllUsers] = useState([]);
     const [Loading, SetLoading] = useState(false);
@@ -14,18 +14,10 @@ export default function Users() {
     const [BlockUsers, SetBlockUsers] = useState(0);
     const [OnlineUsers, SetOnlineUsers] = useState(0);
     const [OfflineUsers, SetOfflineUsers] = useState(0);
-    const Token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7ImlkIjoiOGJmYmQ0N2MtODc5MC00YTQ5LTliYzMtMTBiYzhhY2JkMTY0IiwiRmlyc3ROYW1lIjoiaGFtaWRhIiwiTGFzdE5hbWUiOiJhYmRlbGthcmltIiwiQWRkcmVzcyI6ItmI2YfYsdin2YYiLCJFbWFpbCI6ImhhbWlkYWthaW02N0BnbWFpbC5jb20iLCJQYXNzd29yZCI6IiQyYiQxMCRJNXZCbkVjMlFkSUI2Zzg0VElrdi91dUU0U2ZmVlVVSzYwQ0tGTExvRFpMM2t6TkR1YjBTbSIsIlByb2ZpbGVJbWFnZSI6InByb2ZpbGVfMzkxMzMzLmpwZyIsIlJvbGUiOiJVU0VSIiwiU3RhdHVzIjoiT0ZGTElORSIsImNyZWF0ZWRBdCI6IjIwMjUtMDctMTJUMTA6MTM6MzMuODQ1WiIsInVwZGF0ZWRBdCI6IjIwMjUtMDctMTRUMTQ6Mzg6MzYuMDkzWiJ9LCJpYXQiOjE3NTI1MjY1MDMsImV4cCI6MTc1MjUzMDEwM30.YHNORNOyaM49mFX9WP7Ttnr_au85tvsqibiTWy7DfZ8";
-
     async function FetchUsers() {
         try {
             SetLoading(true);
-            const reponse = await axios.get("http://localhost:5000/api/allusers",
-                {
-                    headers: {
-                        Authorization: `Bearer ${Token}`
-                    }
-                }
-            );
+            const reponse = await AxiosInstance.get("http://localhost:5000/api/allusers");
             const { totlausers, AllUsers, blockusers, onlineusers, offlineusers } = reponse.data;
             SetAllUsers(AllUsers);
             SetTotalUsers(totlausers);
@@ -43,11 +35,7 @@ export default function Users() {
     async function Block(id) {
         try {
             if (window.confirm("Are you sure you want to block this user?")) {
-                const reponse = await axios.put(`http://localhost:5000/api/blockuser/${id}`, {}, {
-                    headers: {
-                        Authorization: `Bearer ${Token}`
-                    }
-                });
+                const reponse = await AxiosInstance.put(`http://localhost:5000/api/blockuser/${id}`);
                 const { message } = reponse.data;
                 alert(message);
                 FetchUsers();
@@ -62,11 +50,7 @@ export default function Users() {
     async function Deblock(id) {
         try {
             if (window.confirm("Are you sure you want to deblock this user?")) {
-                const reponse = await axios.put(`http://localhost:5000/api/deblockuser/${id}`, {}, {
-                    headers: {
-                        Authorization: `Bearer ${Token}`
-                    }
-                });
+                const reponse = await AxiosInstance.put(`http://localhost:5000/api/deblockuser/${id}`);
                 const { message } = reponse.data;
                 alert(message);
                 FetchUsers();
