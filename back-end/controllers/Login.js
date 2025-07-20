@@ -39,7 +39,7 @@ const Login = async (req, res) => {
             httpOnly: true,
             secure: false,
             sameSite: "Lax",
-            maxAge: 60 * 60 * 1000,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
         });
         return res.status(200).json({ message: `Wellcome back ${ExisteUser.FirstName}`, ExisteUser, token: accestoken });
 

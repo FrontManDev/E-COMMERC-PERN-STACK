@@ -50,7 +50,7 @@ const Singeup = async (req, res) => {
             httpOnly: true,
             secure: false,
             sameSite: "Lax",
-            maxAge: 60 * 60 * 1000,
+            maxAge: 7 * 24 * 60 * 60 * 1000,
         }); 
         return res.status(200).json({ message: "The user was added successfully", NewUser, token: accestoken });
 

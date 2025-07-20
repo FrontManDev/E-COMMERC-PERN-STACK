@@ -3,7 +3,7 @@ import Users from "../pages/admin/Users/Users";
 import Products from "../pages/admin/Products/Products";
 import Category from "../pages/admin/Category/Category";
 import AddCategoy from "../pages/admin/AddCategory/AddCategory";
-import AddProducts from "../pages/admin/Products/Products";
+import AddProducts from "../pages/admin/AddProducts/AddProducts";
 import Orders from "../pages/admin/Orders/Oders";
 export default function AdminRoutes() {
     return (

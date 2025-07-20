@@ -10,7 +10,7 @@
     top: 0;
     left: 0;
     width: 15%;
-    border-right: 2px solid #6366f1;
+    border-right: 2px solid hsla(0, 0%, 0%, 0.301);
     height: 100vh;
     padding: 20px;
     z-index: 2;
@@ -22,8 +22,9 @@
     align-items: center;
     gap: 10px;
     padding-left: 10px;
-    color: #3236ff;
+    color: #000000cc;
     margin-bottom: 20px;
+    font-size: 1.1rem;
 }
 
 .SideBar .ul {
@@ -34,8 +35,8 @@
 }
 
 .SideBar ul a {
-    color: #3236ff;
-    border: 1px solid #3236ff;
+    color: #000000cc;
+    border: 1px solid #0000007c;
     height: 40px;
     border-radius: 8px;
     text-decoration: none;
@@ -43,7 +44,7 @@
 }
 
 .SideBar ul a:hover {
-    background-color: #3236ff;
+    background-color: #0000007c;
     color: white;
 }
 
@@ -58,7 +59,7 @@
 }
 
 .SideBar ul a.active {
-    background-color: #3236ff;
+    background-color: #0000007c;
     color: white;
 }
 

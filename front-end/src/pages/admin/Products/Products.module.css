@@ -1,0 +1,132 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.productcontainer{
+    position: absolute;
+    width: 85%;
+    left: 15%;
+    padding: 50px;
+}
+
+.productcontainer .heading{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+}
+
+.productcontainer .heading .select{
+    width: 200px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+}
+
+.productcontainer .heading .button{
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid red;
+    background-color: #ef4444;
+    color: white;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.productcontainer .heading .button:hover{
+  opacity: 0.7;
+}
+.productTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.productTable thead {
+    background-color: #f8fafc;
+}
+
+.productTable thead th {
+    padding: 15px 20px;
+    text-align: left;
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.productTable td {
+    padding: 15px 20px;
+    font-size: 14px;
+    color: #334155;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.productTable tr:last-child td {
+    border-bottom: none;
+}
+
+.productTable tbody tr:hover {
+    background-color: #f8fafc;
+}
+
+.productTable td img {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border: 2px solid #e2e8f0;
+}
+
+.productTable td:nth-child(6) {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+    padding-top: 27px;
+}
+
+.productTable button:first-child{
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    width: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: green;
+    color: white;
+}
+
+.productTable button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 6px;
+    width: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    background-color: #ef4444;
+    color: white;
+}
+.productTable button:hover{
+    opacity: 0.7;
+}
+.productTable button:first-child:hover {
+    opacity: 0.7;
+}

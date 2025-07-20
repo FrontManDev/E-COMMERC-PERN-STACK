@@ -6,6 +6,7 @@ const cookiedParser = require('cookie-parser');
 //create server express
 const app = express();
 app.use('/usersImage', express.static(path.join(__dirname, 'usersImage')));
+app.use('/ProductsImage', express.static(path.join(__dirname, 'ProductsImage')));
 //cros middleware 
 const cors = require('cors');
 app.use(cors({
