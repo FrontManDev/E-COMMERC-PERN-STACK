@@ -9,26 +9,32 @@
     position: absolute;
     width: 85%;
     left: 15%;
-    padding: 50px;
+    padding: 10px 50px;
+    background-color: #fcfcfc;
+    height: 100vh;
 }
 
 .AddProductContainer .heading {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 50px;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 15px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
 }
 
 .AddProductContainer .heading .button {
-    width: 150px;
+    width: 50px;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 20px;
     font-size: 1.1rem;
     border-radius: 5px;
-    border: 1px solid red;
-    background-color: #ef4444;
-    color: #ffffff;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
     font-weight: bold;
     transition: 0.3s;
     cursor: pointer;
@@ -37,119 +43,157 @@
 }
 
 .AddProductContainer .heading .button:hover {
-    opacity: 0.7;
+    background-color: black;
+    color: white;
 }
 
 .AddProductContainer .formcontainer {
     display: flex;
-    flex-direction: column;
-}
-
-.AddProductContainer .formcontainer .formFlex {
-    display: flex;
-    gap: 10px;
-}
-
-.AddProductContainer .formcontainer .formFlex .formInput {
-    display: flex;
-    flex-direction: column;
-    width: 46%;
-    margin: 0 auto;
-    gap: 10px;
-}
-
-.AddProductContainer .formcontainer .formFlex .formInput input {
-    font-size: 1.1rem;
-    padding: 10px;
-    border-radius: 7px;
-    border: 1px solid black;
-    outline: none;
-}
-
-.AddProductContainer .formcontainer .formFlex .formInput select,
-textarea {
-    font-size: 1.1rem;
-    padding: 10px;
-    border-radius: 7px;
-    border: 1px solid black;
-    outline: none;
-}
-
-.AddProductContainer .formcontainer .formFlex .formInput textarea {
-    width: 100%;
-    height: 100px;
-    resize: none;
-}
-
-.AddProductContainer .formcontainer .formFlex .formInput input[type="file"] {
-    display: none;
-}
-
-.AddProductContainer .formcontainer .formFlex .fileinput label {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 2px dashed black;
-    border-radius: 10px;
-    cursor: pointer;
-    background-color: #80808080;
-    font-size: 1.5rem;
-}
-
-.AddProductContainer button {
-    margin: 10px auto;
-    width: 30%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
     gap: 20px;
-    font-size: 1.1rem;
-    border-radius: 5px;
-    border: 1px solid red;
-    background-color: #ef4444;
-    color: #ffffff;
-    font-weight: bold;
-    transition: 0.3s;
-    cursor: pointer;
-    text-decoration: none;
-    padding: 10px;
 }
 
-.AddProductContainer button:hover {
+.AddProductContainer .formcontainer .Images {
+    width: 40%;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale {
+    width: 60%;
+}
+
+.AddProductContainer .formcontainer .Images,
+.InfoGenerale {
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+
+.AddProductContainer .formcontainer .Images h3,
+.InfoGenerale h3 {
+    margin-bottom: 10px;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale .formInput {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale .formInput label {
+    font-size: 1rem;
+    color: #000000e8;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale .formInput input {
+    height: 40px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px gainsboro solid;
+    outline: none;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale .formInput select {
+    height: 40px;
+    padding: 0px 5px;
+    font-size: 1.2rem;
+    border: 1px solid gainsboro;
+    border-radius: 6px;
+    color: gray;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale .formInput textarea {
+    height: 60px;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale .button {
+    display: flex;
+    justify-content: end;
+    padding: 5px 30px;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale .button button {
+    width: 110px;
+    padding: 10px;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.AddProductContainer .formcontainer .InfoGenerale .button button:hover {
     opacity: 0.7;
 }
 
-.AddProductContainer .Images {
-    display: flex;
-    padding: 5px 20px;
-    gap: 10px;
-    flex-wrap: wrap;
+.AddProductContainer .formcontainer .Images .fileInput input {
+    display: none;
 }
 
-.AddProductContainer .Images .Imag{
-    width: 100px;
-    height: 100px;
-    position: relative;
-}
-
-.AddProductContainer .Images .Imag .icon{
-    position: absolute;
-    top: 0;
-    right: 0;
-    color: red;
+.AddProductContainer .formcontainer .Images .fileInput label {
+    background-color: black;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
     cursor: pointer;
-    font-size: 1.5rem;
+    color: white;
     transition: 0.3s;
 }
 
-.AddProductContainer .Images .Imag .icon:hover{
-    transform: scale(1.2);
+.AddProductContainer .formcontainer .Images .fileInput label:hover {
+    opacity: 0.7;
 }
 
-.AddProductContainer .Images img {
+.AddProductContainer .formcontainer .Images .ImagesItems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px auto;
+    width: 100%;
+}
+
+.AddProductContainer .formcontainer .Images .ImageItem {
+    width: 150px;
+    height: 125px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.AddProductContainer .formcontainer .Images .ImageItem .icon {
+    position: absolute;
+    font-size: 1rem;
+    color: red;
+    top: 40%;
+    left: 25%;
     border-radius: 10px;
+    background-color: pink;
+    border: 1px solid red;
+    padding: 5px 10px;
+    display: none;
+    cursor: pointer;
+}
+
+.AddProductContainer .formcontainer .Images .ImageItem:hover .icon {
+    display: block;
+}
+
+.AddProductContainer .formcontainer .Images .ImageItem img {
     width: 100%;
     height: 100%;
     object-fit: cover;
