@@ -22,7 +22,7 @@
     align-items: center;
     gap: 10px;
     padding-left: 10px;
-    color: #000000cc;
+    color: black;
     margin-bottom: 20px;
     font-size: 1.1rem;
 }
@@ -35,18 +35,24 @@
 }
 
 .SideBar ul a {
-    color: #000000cc;
-    border: 1px solid #0000007c;
+    color: black;
     height: 40px;
-    border-radius: 8px;
     text-decoration: none;
-    transition: 0.3s;
+    width: 100%;
+    position: relative;
 }
 
-.SideBar ul a:hover {
-    background-color: #0000007c;
-    color: white;
+.SideBar ul a::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -10px;
+    width: 3px;
+    height: 100%;
+    background-color: black;
+    display: none;
 }
+
 
 .SideBar ul a li {
     display: flex;
@@ -58,12 +64,16 @@
     height: 100%;
 }
 
-.SideBar ul a.active {
-    background-color: #0000007c;
-    color: white;
+.SideBar ul a.active, 
+.SideBar ul a.active::before {
+    font-weight: bolder;
 }
 
-.SideBar .button{
+.SideBar ul a.active::before {
+    display: block;
+}
+
+.SideBar .button {
     width: 80%;
     position: absolute;
     bottom: 40px;
@@ -80,10 +90,12 @@
     cursor: pointer;
     transition: 0.3s;
 }
-.SideBar .button .icon{
+
+.SideBar .button .icon {
     font-size: 1.2rem;
     font-weight: bold;
 }
-.SideBar .button:hover{
+
+.SideBar .button:hover {
     opacity: 0.7;
 }

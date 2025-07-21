@@ -34,31 +34,59 @@ export default function Products() {
         }
     }
 
+    async function ProductByCategory(id) {
+        try {
+            SetLoading(true);
+            const response = await AxiosInstance.get(`http://localhost:5000/api/proudctbycategory/${id}`);
+            console.log(response);
+            SetProducts(response.data.product);
+        } catch (error) {
+            SetError(error.message);
+        } finally {
+            SetLoading(false);
+        }
+
+    }
+    async function DeleteProduct(id) {
+        try {
+            SetLoading(true);
+            const response = await AxiosInstance.delete(`http://localhost:5000/api/deleteproduct/${id}`);
+            console.log(response);
+            AllProducts();
+        } catch (error) {
+            SetError(error.message);
+        } finally {
+            SetLoading(false);
+        }
+    }
+
     useEffect(() => {
         AllCategory();
         AllProducts();
     }, []);
 
     if (Loading) {
-        return <div>...Loading</div>;
+        return <div className={style.Loading}>...Loading</div>;
     }
 
     if (Error) {
-        return <div>{Error}</div>;
+        return <div className={style.Error}>{Error}</div>;
     }
 
     return (
         <div className={style.productcontainer}>
             <div className={style.heading}>
-                <select className={style.select}>
-                    {
-                        Category.map((category) => (
-                            <option value={category.id} key={category.id}>
-                                {category.Name}
-                            </option>
-                        ))
-                    }
+                <select
+                    className={style.select}
+                    onChange={(e) => ProductByCategory(e.target.value)}
+                >
+                    {Category.map((category) => (
+                        <option value={category.id} key={category.id}>
+                            {category.Name}
+                        </option>
+                    ))}
                 </select>
+
                 <NavLink to="/adminAddProducts" className={style.button}><FaPlus />Add New</NavLink>
             </div>
 
@@ -75,7 +103,7 @@ export default function Products() {
                 </thead>
                 <tbody>
                     {
-                        Products.map((product, index) => {
+                        Products.length > 0 ? Products.map((product, index) => {
                             const Image = JSON.parse(product.ProductsImage);
                             return (
                                 <tr key={index}>
@@ -92,12 +120,13 @@ export default function Products() {
                                     <td>{product.Quantity}</td>
                                     <td>{new Date(product.createdAt).toLocaleDateString()}</td>
                                     <td>
-                                        <button>Edit</button>
-                                        <button>Delete</button>
+                                        <NavLink to={`/editproduct/${product.id}`}>Edit</NavLink>
+                                        <button onClick={() => DeleteProduct(product.id)}>Delete</button>
                                     </td>
                                 </tr>
                             )
-                        })
+                        }) :
+                            <tr><td colSpan={6} className={style.TdCenter}>No products found</td></tr>
                     }
                 </tbody>
             </table>

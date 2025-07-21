@@ -1,9 +1,21 @@
 const prisma = require('../../config/database');
+const fs = require('fs');
+const path = require('path');
 const addproducts = async (req, res) => {
     try {
         const { Name, Description, Price, Quantity, categoryId } = req.body;
         const files = req.files;
-        if (!Name || !Description || !Price || !Quantity || !categoryId || !files.length === 0) {
+        if (!Name || !Description || !Price || !Quantity || !categoryId || files.length === 0) {
+            files.forEach(img => {
+                const filepath = path.join(__dirname,'../../ProductsImage',img);
+                fs.unlink(filepath,(error)=>{
+                if(error){
+                    console.log('failed of deleteing the image');
+                }else{
+                    console.log('the image is deleted succesfully');
+                }
+                });
+            });
             return res.status(400).json({ message: " all feilds are requirde" });
         }
         const IsExiste = await prisma.products.findFirst({where:{

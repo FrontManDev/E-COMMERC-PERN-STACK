@@ -5,6 +5,7 @@ import Category from "../pages/admin/Category/Category";
 import AddCategoy from "../pages/admin/AddCategory/AddCategory";
 import AddProducts from "../pages/admin/AddProducts/AddProducts";
 import Orders from "../pages/admin/Orders/Oders";
+import EditProducts from "../pages/admin/EditProducts/EditProducts";
 export default function AdminRoutes() {
     return (
         <Routes>
@@ -14,6 +15,7 @@ export default function AdminRoutes() {
             <Route path="/adminAddCategoy" element={<AddCategoy />} />
             <Route path="/adminAddProducts" element={<AddProducts />} />
             <Route path="/adminOrders" element={<Orders />} />
+            <Route path="/editproduct/:id" element={<EditProducts/>} />
         </Routes>
     )
 }
