@@ -1,0 +1,201 @@
+/* EditProducts.module.css */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.EditProductContainer {
+    position: absolute;
+    width: 85%;
+    left: 15%;
+    padding: 10px 50px;
+    background-color: #fcfcfc;
+    height: 100vh;
+}
+
+.EditProductContainer .heading {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    margin-bottom: 25px;
+    font-size: 15px;
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+
+.EditProductContainer .heading .button {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    font-size: 1.1rem;
+    border-radius: 5px;
+    border: 1px solid black;
+    background-color: white;
+    color: black;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.EditProductContainer .heading .button:hover {
+    background-color: black;
+    color: white;
+}
+
+.EditProductContainer .formcontainer {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.EditProductContainer .formcontainer .Images {
+    width: 40%;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale {
+    width: 60%;
+}
+
+.EditProductContainer .formcontainer .Images,
+.InfoGenerale {
+    border: 1px solid grey;
+    border-radius: 8px;
+    padding: 10px;
+    background-color: white;
+    padding: 10px 20px;
+}
+
+.EditProductContainer .formcontainer .Images h3,
+.InfoGenerale h3 {
+    margin-bottom: 10px;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale .formInput {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+    width: 95%;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale .formInput label {
+    font-size: 1rem;
+    color: #000000e8;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale .formInput input {
+    height: 40px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px gainsboro solid;
+    outline: none;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale .formInput select {
+    height: 40px;
+    padding: 0px 5px;
+    font-size: 1.2rem;
+    border: 1px solid gainsboro;
+    border-radius: 6px;
+    color: gray;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale .formInput textarea {
+    height: 60px;
+    padding: 10px;
+    border-radius: 7px;
+    font-size: 1rem;
+    resize: none;
+    outline: none;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale .button {
+    display: flex;
+    justify-content: end;
+    padding: 5px 30px;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale .button button {
+    width: 150px;
+    padding: 10px;
+    border: 1px solid black;
+    color: white;
+    background-color: black;
+    border-radius: 7px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.EditProductContainer .formcontainer .InfoGenerale .button button:hover {
+    opacity: 0.7;
+}
+
+.EditProductContainer .formcontainer .Images .fileInput input {
+    display: none;
+}
+
+.EditProductContainer .formcontainer .Images .fileInput label {
+    background-color: black;
+    width: 100%;
+    padding: 5px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    color: white;
+    transition: 0.3s;
+}
+
+.EditProductContainer .formcontainer .Images .fileInput label:hover {
+    opacity: 0.7;
+}
+
+.EditProductContainer .formcontainer .Images .ImagesItems {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px auto;
+    width: 100%;
+}
+
+.EditProductContainer .formcontainer .Images .ImageItem {
+    width: 150px;
+    height: 125px;
+    border: 1px solid #ccc;
+    overflow: hidden;
+    border-radius: 5px;
+    position: relative;
+    cursor: pointer;
+}
+
+.EditProductContainer .formcontainer .Images .ImageItem .icon {
+    position: absolute;
+    font-size: 1rem;
+    color: red;
+    top: 40%;
+    left: 25%;
+    border-radius: 10px;
+    background-color: pink;
+    border: 1px solid red;
+    padding: 5px 10px;
+    display: none;
+    cursor: pointer;
+}
+
+.EditProductContainer .formcontainer .Images .ImageItem:hover .icon {
+    display: block;
+}
+
+.EditProductContainer .formcontainer .Images .ImageItem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

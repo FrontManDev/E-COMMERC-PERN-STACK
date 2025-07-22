@@ -4,8 +4,6 @@ import style from "./AddProducts.module.css";
 import { useEffect, useState } from "react";
 import AxiosInstance from "../../../axiosInterceptore/axiosInterceptoreToken";
 import { RiUpload2Fill } from "react-icons/ri";
-import { IoIosRemoveCircle } from "react-icons/io";
-
 
 export default function AddProducts() {
 
@@ -78,11 +76,11 @@ export default function AddProducts() {
                                         {
                                             Product.Imags.map((item, index) => (
                                                 <div className={style.ImageItem} key={index}>
-                                                    <button className={style.icon} onClick={() => SetProduct((prev) => (
+                                                    <span className={style.icon} onClick={() => SetProduct((prev) => (
                                                         {
                                                             ...prev, Imags: prev.Imags.filter((_, i) => i !== index)
                                                         }
-                                                    ))}>Remove</button>
+                                                    ))}>Remove</span>
                                                     <img src={URL.createObjectURL(item)} alt="" />
                                                 </div>
                                             ))
@@ -133,7 +131,7 @@ export default function AddProducts() {
                             }))}></textarea>
                         </div>
                         <div className={style.button}>
-                            <button>Add Product</button>
+                            <button >Add Product</button>
                         </div>
                     </div>
                 </div>
