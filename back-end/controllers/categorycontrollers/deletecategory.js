@@ -1,18 +1,39 @@
 const prisma = require('../../config/database');
+const fs = require('fs');
+const path = require('path');
 const deletecategory = async (req, res) => {
     try {
         const id = req.params.id;
-        const deleteproducts = await prisma.products.deleteMany({
+        const products = await prisma.products.findMany({
             where: {
                 categoryId: id
             }
-        })
+        });
+        products.forEach((deletedProduct) => {
+                const images = JSON.parse(deletedProduct.ProductsImage);
+                images.forEach((img) => {
+                    const filepath = path.join(__dirname, "../../ProductsImage", img);
+                    try {
+                        if (fs.existsSync(filepath)) {
+                            fs.unlinkSync(filepath);
+                        }
+                    } catch (err) {
+                        console.error("Failed to delete image:", img, err.message);
+                    }
+                });
+        });
+        const DeletedProduct = await prisma.products.deleteMany({
+            where: {
+                categoryId: id
+            }
+        });
+
         const deletedcategory = await prisma.category.delete({
             where: {
                 id: id
             }
         });
-        if (!deletedcategory || !deleteproducts) {
+        if (!deletedcategory || !DeletedProduct) {
             return res.status(500).json({ message: "error in database" });
         }
 
