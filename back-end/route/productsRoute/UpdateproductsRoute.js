@@ -4,5 +4,5 @@ const {updateproducts} = require('../../controllers/productscontrollers/updatepr
 const {authentication} = require('../../middleware/authentications');
 const {uploadProducts} = require('../../middleware/multer');
 const {IsAdmin} = require('../../middleware/Role');
-route.put('/updateproducts/:id',authentication,IsAdmin,uploadProducts.array('file',5),updateproducts);
+route.put('/updateproducts/:id',authentication,IsAdmin,uploadProducts.array('files',5),updateproducts);
 module.exports = route;
