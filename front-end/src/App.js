@@ -1,13 +1,13 @@
+import { useSelector } from "react-redux";
 import Authentication from "./authentication/Authentication";
 import AdminLayout from "./layouts/AdminLayout";
 import UserLayout from "./layouts/UserLayout";
-import Role from "./utils/Role";
 export default function App() {
-  const role = Role();
+  const {token,role} = useSelector((state)=>state.auth);
   return (
     <>
     {
-      localStorage.getItem("token") ? (role === "ADMIN" ? <AdminLayout/> : <UserLayout/>) : (<Authentication/>)
+      token ? <AdminLayout/> : <Authentication/>
     }
     </>
   );

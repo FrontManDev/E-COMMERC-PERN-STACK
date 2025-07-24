@@ -83,12 +83,13 @@
     gap: 20px;
     padding: 7px;
     border-radius: 10px;
-    border: 1px solid red;
-    color: red;
-    background-color: pink;
+    border: 1px solid #000000;
+    color: #ffffff;
+    background-color: #000000;
     font-size: 1.1rem;
     cursor: pointer;
     transition: 0.3s;
+    font-weight: bold;
 }
 
 .SideBar .button .icon {

@@ -1,0 +1,15 @@
+import { Routes , Route} from "react-router-dom";
+import Home from "../pages/store/Home/Home";
+import Products from "../pages/store/Products/Products";
+import Cart from "../pages/store/Cart/Cart";
+import Orders from "../pages/admin/Orders/Oders";
+export default function UserRoute(){
+    return(
+        <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/Products" element={<Products/>}/>
+            <Route path="/Cart" element={<Cart/>}/>
+            <Route path="/Orders" element={<Orders/>}/>
+        </Routes>
+    );
+}

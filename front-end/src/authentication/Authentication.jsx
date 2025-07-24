@@ -3,13 +3,15 @@ import { useState } from "react";
 import { IoEyeSharp } from "react-icons/io5";
 import { BsEyeSlashFill } from "react-icons/bs";
 import AxiosInstance from '../axiosInterceptore/axiosInterceptoreToken';
+import { useDispatch } from 'react-redux';
+import { authentication } from '../redux/slices/authSlice';
 export default function Authentication() {
+    const dispatch = useDispatch();
     const [IsLogin, SetIsLogin] = useState(true);
     const [ShowPassword, SetShowPassword] = useState([false, false, false]);
     const [IsMatchPassword, SetIsMatchPassword] = useState({ Password: '', confirmPassword: '' });
     const [LoginFromData, SetLoginFormData] = useState({ Email: '', Password: '' });
     const [SingeFormData, SetSingeFormdata] = useState({ FirstName: '', LastName: '', Address: '', Email: '', Password: '', file: null });
-
     async function Signein() {
         try {
             if (IsMatchPassword.Password === IsMatchPassword.confirmPassword) {
@@ -22,7 +24,7 @@ export default function Authentication() {
                 SingeData.append("ProfileImage", SingeFormData.file);
                 const response = await AxiosInstance.post("http://localhost:5000/api/singeup", SingeData);
                 const { message, NewUser, token } = response.data;
-                localStorage.setItem("token",token);
+                dispatch(authentication({ token }));
                 console.log(NewUser);
                 alert(message);
             }
@@ -40,7 +42,7 @@ export default function Authentication() {
             const { message, ExisteUser, token } = response.data;
             console.log(token);
             console.log(ExisteUser);
-            localStorage.setItem("token",token);
+            dispatch(authentication({ token }));
             alert(message);
         } catch (Error) {
             if (Error.response && Error.response.data) {
@@ -61,7 +63,7 @@ export default function Authentication() {
             <h2>Wellcome</h2>
             <p>Get started with us for best experience shopping</p>
             <form onSubmit={(e) => handlesubmit(e)}>
-                {IsLogin ? 
+                {IsLogin ?
                     <div className={styles.login}>
                         <div className={styles.formInput}>
                             <label htmlFor="">Email</label>
@@ -76,12 +78,12 @@ export default function Authentication() {
                                 ...prev,
                                 Password: e.target.value
                             }))} />
-                            {ShowPassword[0] ? 
+                            {ShowPassword[0] ?
                                 <IoEyeSharp className={styles.icon} onClick={() => SetShowPassword(prev => {
                                     const NewState = [...prev];
                                     NewState[0] = !NewState[0];
                                     return NewState;
-                                })} /> : 
+                                })} /> :
                                 <BsEyeSlashFill className={styles.icon} onClick={() => SetShowPassword(prev => {
                                     const NewState = [...prev];
                                     NewState[0] = !NewState[0];
@@ -138,12 +140,12 @@ export default function Authentication() {
                                         Password: e.target.value,
                                     }));
                                 }} />
-                                {ShowPassword[1] ? 
+                                {ShowPassword[1] ?
                                     <IoEyeSharp className={styles.icon} onClick={() => SetShowPassword(prev => {
                                         const NewState = [...prev];
                                         NewState[1] = !NewState[1];
                                         return NewState;
-                                    })} /> : 
+                                    })} /> :
                                     <BsEyeSlashFill className={styles.icon} onClick={() => SetShowPassword(prev => {
                                         const NewState = [...prev];
                                         NewState[1] = !NewState[1];
@@ -157,12 +159,12 @@ export default function Authentication() {
                                     ...prev,
                                     confirmPassword: e.target.value
                                 }))} />
-                                {ShowPassword[2] ? 
+                                {ShowPassword[2] ?
                                     <IoEyeSharp className={styles.icon} onClick={() => SetShowPassword(prev => {
                                         const NewState = [...prev];
                                         NewState[2] = !NewState[2];
                                         return NewState;
-                                    })} /> : 
+                                    })} /> :
                                     <BsEyeSlashFill className={styles.icon} onClick={() => SetShowPassword(prev => {
                                         const NewState = [...prev];
                                         NewState[2] = !NewState[2];

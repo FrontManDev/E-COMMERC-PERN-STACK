@@ -10,17 +10,17 @@ const deletecategory = async (req, res) => {
             }
         });
         products.forEach((deletedProduct) => {
-                const images = JSON.parse(deletedProduct.ProductsImage);
-                images.forEach((img) => {
-                    const filepath = path.join(__dirname, "../../ProductsImage", img);
-                    try {
-                        if (fs.existsSync(filepath)) {
-                            fs.unlinkSync(filepath);
-                        }
-                    } catch (err) {
-                        console.error("Failed to delete image:", img, err.message);
+            const Images = JSON.parse(deletedProduct.ProductsImage);
+            Images.forEach((img)=>{
+                const filepath = path.join(__dirname,'../../ProductsImage',img);
+                try{
+                    if(fs.existsSync(filepath)){
+                        fs.unlinkSync(filepath);
                     }
-                });
+                }catch(error){
+                    console.log('failde of deleing the procut images',error.message);
+                }
+            })
         });
         const DeletedProduct = await prisma.products.deleteMany({
             where: {
