@@ -17,6 +17,7 @@ export default function SideBar() {
         try {
             const respone = await AxiosInstance.post('http://localhost:5000/api/logout');
             console.log(respone);
+            dispatch(logout());
         } catch (error) {
             console.log(error.message);
         }
@@ -25,12 +26,12 @@ export default function SideBar() {
         <div className={style.SideBar}>
             <h3 className={style.title}><MdDashboard /> <span> DASHBOARD</span></h3>
             <ul className={style.ul}>
-                <NavLink to="/adminhome" className={({ isActive }) => (isActive ? style.active : null)}><li><IoHome />Home</li></NavLink>
-                <NavLink to="/adminusers" className={({ isActive }) => (isActive ? style.active : null)}><li><FaUsers />Users</li></NavLink>
-                <NavLink to="/adminProducts" className={({ isActive }) => (isActive ? style.active : null)}><li><MdOutlineProductionQuantityLimits />Products</li></NavLink>
-                <NavLink to="/adminCategory" className={({ isActive }) => (isActive ? style.active : null)}><li>< MdCategory />Category</li></NavLink>
-                <NavLink to="/adminOrders" className={({ isActive }) => (isActive ? style.active : null)}><li><FaShippingFast />Orders</li></NavLink>
-                <NavLink to="/" className={({ isActive }) => (isActive ? style.active : null)}><li><FaStoreAlt />Go to Store</li></NavLink>
+                <NavLink to="/admin/home" className={({ isActive }) => (isActive ? style.active : null)}><li><IoHome />Home</li></NavLink>
+                <NavLink to="/admin/users" className={({ isActive }) => (isActive ? style.active : null)}><li><FaUsers />Users</li></NavLink>
+                <NavLink to="/admin/Products" className={({ isActive }) => (isActive ? style.active : null)}><li><MdOutlineProductionQuantityLimits />Products</li></NavLink>
+                <NavLink to="/admin/Category" className={({ isActive }) => (isActive ? style.active : null)}><li>< MdCategory />Category</li></NavLink>
+                <NavLink to="/admin/Orders" className={({ isActive }) => (isActive ? style.active : null)}><li><FaShippingFast />Orders</li></NavLink>
+                <NavLink to="/User" className={({ isActive }) => (isActive ? style.active : null)}><li><FaStoreAlt />Go to Store</li></NavLink>
             </ul>
             <button className={style.button} onClick={() => {
                 localStorage.removeItem("token");

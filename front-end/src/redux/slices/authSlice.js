@@ -12,7 +12,7 @@ const AuthSlice = createSlice({
         authentication: (state, action) => {
             const { token } = action.payload;
             const decode = jwtDecode(token);
-            const role = decode.Rle;
+            const role = decode.Role;
             state.token = token;
             state.role  = role;
             localStorage.setItem("token", token);

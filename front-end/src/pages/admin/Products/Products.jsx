@@ -87,7 +87,7 @@ export default function Products() {
                     ))}
                 </select>
 
-                <NavLink to="/adminAddProducts" className={style.button}><FaPlus />Add New</NavLink>
+                <NavLink to="/admin/AddProducts" className={style.button}><FaPlus />Add New</NavLink>
             </div>
 
             <table className={style.productTable}>
@@ -120,7 +120,7 @@ export default function Products() {
                                     <td>{product.Quantity}</td>
                                     <td>{new Date(product.createdAt).toLocaleDateString()}</td>
                                     <td>
-                                        <NavLink to={`/editproduct/${product.id}`}>Edit</NavLink>
+                                        <NavLink to={`/admin/editproduct/${product.id}`}>Edit</NavLink>
                                         <button onClick={() => DeleteProduct(product.id)}>Delete</button>
                                     </td>
                                 </tr>

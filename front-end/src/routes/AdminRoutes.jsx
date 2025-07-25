@@ -9,13 +9,13 @@ import EditProducts from "../pages/admin/EditProducts/EditProducts";
 export default function AdminRoutes() {
     return (
         <Routes>
-            <Route path="/adminusers" element={<Users />} />
-            <Route path="/adminProducts" element={<Products />} />
-            <Route path="/adminCategory" element={<Category />} />
-            <Route path="/adminAddCategoy" element={<AddCategoy />} />
-            <Route path="/adminAddProducts" element={<AddProducts />} />
-            <Route path="/adminOrders" element={<Orders />} />
-            <Route path="/editproduct/:id" element={<EditProducts/>} />
+            <Route path="users" element={<Users />} />
+            <Route path="Products" element={<Products />} />
+            <Route path="Category" element={<Category />} />
+            <Route path="AddCategoy" element={<AddCategoy />} />
+            <Route path="AddProducts" element={<AddProducts />} />
+            <Route path="Orders" element={<Orders />} />
+            <Route path="editproduct/:id" element={<EditProducts/>} />
         </Routes>
     )
 }

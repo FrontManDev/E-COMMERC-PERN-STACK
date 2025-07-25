@@ -5,6 +5,8 @@ import { BsEyeSlashFill } from "react-icons/bs";
 import AxiosInstance from '../axiosInterceptore/axiosInterceptoreToken';
 import { useDispatch } from 'react-redux';
 import { authentication } from '../redux/slices/authSlice';
+import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 export default function Authentication() {
     const dispatch = useDispatch();
     const [IsLogin, SetIsLogin] = useState(true);
@@ -12,6 +14,7 @@ export default function Authentication() {
     const [IsMatchPassword, SetIsMatchPassword] = useState({ Password: '', confirmPassword: '' });
     const [LoginFromData, SetLoginFormData] = useState({ Email: '', Password: '' });
     const [SingeFormData, SetSingeFormdata] = useState({ FirstName: '', LastName: '', Address: '', Email: '', Password: '', file: null });
+    const navigate = useNavigate();
     async function Signein() {
         try {
             if (IsMatchPassword.Password === IsMatchPassword.confirmPassword) {
@@ -25,6 +28,11 @@ export default function Authentication() {
                 const response = await AxiosInstance.post("http://localhost:5000/api/singeup", SingeData);
                 const { message, NewUser, token } = response.data;
                 dispatch(authentication({ token }));
+                if (localStorage.getItem('role') === "ADMIN") {
+                    navigate('/admin');
+                } else {
+                    navigate('/User')
+                }
                 console.log(NewUser);
                 alert(message);
             }
@@ -40,9 +48,13 @@ export default function Authentication() {
         try {
             const response = await AxiosInstance.post("http://localhost:5000/api/login", LoginFromData);
             const { message, ExisteUser, token } = response.data;
-            console.log(token);
             console.log(ExisteUser);
             dispatch(authentication({ token }));
+            if (localStorage.getItem('role') === "ADMIN") {
+                navigate('/admin');
+            } else {
+                navigate('/User')
+            }
             alert(message);
         } catch (Error) {
             if (Error.response && Error.response.data) {
