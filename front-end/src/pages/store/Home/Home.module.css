@@ -1,0 +1,325 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  box-sizing: border-box;
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+  z-index: 3;
+}
+
+.home .hero {
+  height: 70vh;
+  background-image: url("/public/img/hero-img.jpg");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home .hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.home .hero .heroInfo {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 50%;
+  font-size: 1.2rem;
+  color: rgb(230, 230, 230);
+  padding: 0 20px;
+  text-align: center;
+}
+
+.home .hero .heroInfo h1 span {
+  color: #09ff00;
+}
+
+.home .hero .heroInfo p {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.home .hero .heroInfo button {
+  width: 150px;
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+  background-color: #09ff00e5;
+  color: white;
+  font-weight: bold;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.home .hero .heroInfo button:hover {
+  background-color: #09ff00b6;
+  box-shadow: #09ff00 0px 5px 15px;
+}
+
+.home .NewTestPocuts {
+  padding: 30px 0px;
+}
+
+.home .NewTestPocuts h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.home .NewTestPocuts .products {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.home .NewTestPocuts .products .product {
+  width: calc(25% - 20px);
+  min-width: 250px;
+  height: 500px;
+  cursor: pointer;
+}
+
+.home .NewTestPocuts .products .product .article {
+  width: 100%;
+  height: 80%;
+  position: relative;
+  overflow: hidden;
+}
+
+.home .NewTestPocuts .products .product .article img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home .NewTestPocuts .products .product .article .buttons {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: #0000003d;
+  transition: 0.3s;
+}
+
+.home .NewTestPocuts .products .product .article .buttons button {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.home .NewTestPocuts .products .product .article .buttons button:hover {
+  transform: scale(1.1);
+}
+
+.home .NewTestPocuts .products .product .article .buttons button:first-child {
+  color: #09ff00;
+  background-color: #09ff0046;
+  border: 1px solid #09ff00;
+}
+
+.home .NewTestPocuts .products .product .article .buttons button:nth-child(2) {
+  color: red;
+  background-color: #ff000046;
+  border: 1px solid red;
+}
+
+.home .NewTestPocuts .products .product .article .buttons button:nth-child(3) {
+  color: blue;
+  background-color: #0000ff46;
+  border: 1px solid blue;
+}
+
+.home .NewTestPocuts .products .product .article:hover .buttons {
+  top: 80%;
+}
+
+.home .NewTestPocuts .products .product .information {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 5px;
+}
+
+.home .Categories {
+  padding: 30px 10px;
+  min-height: 100vh;
+}
+
+.home .Categories h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.home .Categories .category {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0 20px;
+}
+
+.home .Categories .category .cate {
+  width: calc(25% - 10px);
+  min-width: 250px;
+  height: 300px;
+  position: relative;
+}
+
+.home .Categories .category .cate img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.home .Categories .category .cate .cateinfo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000046;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.home .Categories .category .cate .cateinfo h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.home .Categories .category .cate .cateinfo button {
+  width: 150px;
+  padding: 10px;
+  background-color: #09ff00e5;
+  transition: 0.3s;
+  border: none;
+  color: white;
+  border-radius: 50px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.home .Categories .category .cate .cateinfo button:hover {
+  background-color: #09ff00b6;
+  box-shadow: #09ff00 0px 5px 15px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1200px) {
+  .home .NewTestPocuts .products .product {
+    width: calc(33.33% - 20px);
+  }
+  
+  .home .Categories .category .cate {
+    width: calc(33.33% - 10px);
+  }
+}
+
+@media (max-width: 992px) {
+  .home .hero .heroInfo {
+    width: 70%;
+  }
+  
+  .home .NewTestPocuts .products .product {
+    width: calc(50% - 20px);
+  }
+  
+  .home .Categories .category .cate {
+    width: calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .home .hero {
+    height: 60vh;
+  }
+  
+  .home .hero .heroInfo {
+    width: 90%;
+    font-size: 1rem;
+  }
+  
+  .home .NewTestPocuts .products .product {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .home .Categories .category .cate {
+    width: 100%;
+    max-width: 350px;
+  }
+  
+  .home .Categories {
+    min-height: auto;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 576px) {
+  .home .hero {
+    height: 50vh;
+  }
+  
+  .home .hero .heroInfo h1 {
+    font-size: 1.8rem;
+  }
+  
+  .home .hero .heroInfo p {
+    font-size: 0.9rem;
+  }
+  
+  .home .NewTestPocuts .products,
+  .home .Categories .category {
+    padding: 0 10px;
+  }
+  
+  .home .NewTestPocuts .products .product {
+    height: 450px;
+  }
+  
+  .home .Categories .category .cate {
+    height: 250px;
+  }
+  
+  .home .Categories .category .cate .cateinfo h2 {
+    font-size: 1.5rem;
+  }
+  
+  .home .Categories .category .cate .cateinfo button {
+    width: 120px;
+    font-size: 1rem;
+  }
+}

@@ -84,6 +84,7 @@
         display: block;
         position: absolute;
         top: 10.8%;
+        left: 0;
         display: flex;
         justify-content: center;
         flex-direction: column;

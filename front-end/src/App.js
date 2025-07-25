@@ -7,7 +7,7 @@ import NotFound from "./notfound/NotFound";
 export default function App() {
   return (
     <Routes>
-      <Route path="/authentication" element={<Authentication />} />
+      <Route path="/" element={<Authentication />} />
       <Route path="/Store" element={<StoreLayout />} />
       <Route path="/admin/*" element={
         <AdminProtectedRoute>
