@@ -8,7 +8,7 @@ export default function AdminProtectedRoute({ children }) {
     }
 
     if (localStorage.getItem('role')!== "ADMIN") {
-        return <Navigate to="/User" replace />;
+        return <Navigate to="/" replace />;
     }
 
     return children;

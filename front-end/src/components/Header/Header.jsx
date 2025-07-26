@@ -15,12 +15,12 @@ export default function Header() {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/Products'>
+          <NavLink to='/Store/Products'>
             Products
           </NavLink>
         </li>
         <li>
-          <NavLink to='/Contact_us'>
+          <NavLink to='/Store/Contact_us'>
             Contact_us
           </NavLink>
         </li>

@@ -1,0 +1,178 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+h1{
+    text-align: center;
+    margin: 30px auto;
+}
+.heroProducts {
+    display: flex;
+    gap: 20px;
+    height: 50vh;
+    padding-bottom: 30px;
+    margin-bottom: 10px;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+}
+
+.heroProducts .categoriesSection {
+    height: 100%;
+    padding: 30px;
+    border-right: 1px solid grey;
+    width: 13%;
+}
+
+.heroProducts .categoriesSection .categoryList {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    list-style: none;
+}
+
+.heroProducts .categoriesSection .categoryList li {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.heroProducts .categoriesSection .categoryList li:hover {
+    transform: translateX(10px);
+    font-weight: bold;
+    color: #1bc51b;
+    border-bottom: 1px solid #1bc51b;
+}
+
+.heroProducts .heroImagesOffer {
+    height: 100%;
+    background-image: url("/public/img/hero-img.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-top: 10px;
+    border-radius: 10px;
+}
+
+.heroProducts .heroImagesOffer::after {
+    position: absolute;
+    top: 0;
+    left: 0;
+    content: '';
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 0.37);
+    z-index: 1;
+}
+
+.heroProducts .heroImagesOffer h1 {
+    width: 60%;
+    text-align: center;
+    z-index: 2;
+    color: white;
+}
+
+.contentWrapper {
+    margin: 20px auto
+}
+
+.contentWrapper .productsSection {
+    width: 100%;
+    padding: 0px 20px;
+}
+
+.contentWrapper .productsSection .productsGrid {
+  display: flex;
+  padding: 30px;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard {
+  width: calc(25% - 20px);
+  min-width: 250px;
+  height: 500px;
+  cursor: pointer;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer {
+    width: 100%;
+    height: 80%;
+    position: relative;
+    overflow: hidden;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer img {
+  width: 100%;
+  height: 90%;
+  object-fit: cover;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer  .productActions{
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  padding: 20px 10px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  background-color: white;
+  transition: 0.3s;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer  .productActions button {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 50px;
+  border: none;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer .productActions button:hover {
+  transform: scale(1.1);
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer .productActions button:hover {
+  transform: scale(1.1);
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer .productActions button:first-child {
+  color: #09ff00;
+  background-color: #09ff0046;
+  border: 1px solid #09ff00;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer .productActions button:nth-child(2) {
+  color: red;
+  background-color: #ff000046;
+  border: 1px solid red;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer .productActions button:nth-child(3) {
+  color: blue;
+  background-color: #0000ff46;
+  border: 1px solid blue;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productImageContainer:hover .productActions  {
+  top: 80%;
+}
+
+.contentWrapper .productsSection .productsGrid .productCard .productInfo{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
