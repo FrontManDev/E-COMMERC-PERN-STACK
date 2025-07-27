@@ -32,6 +32,21 @@ export default function Products() {
             SetLoading(false);
         }
     }
+
+    async function ProductByCategory(id) {
+        try {
+            SetLoading(true);
+            const response = await AxiosInstance.get(`http://localhost:5000/api/proudctbycategory/${id}`);
+            console.log(response);
+            SetProducts(response.data.product);
+        } catch (error) {
+            SetError(error.message);
+        } finally {
+            SetLoading(false);
+        }
+
+    }
+
     useEffect(() => {
         AllCategory();
         AllProducts();
@@ -41,10 +56,10 @@ export default function Products() {
             <div className={styles.heroProducts}>
                 <div className={styles.categoriesSection}>
                     <ul className={styles.categoryList}>
-                        <li>All</li>
+                        <li onClick={()=>AllProducts()}>All</li>
                         {
                             Category.map((cat) => (
-                                <li key={cat._id}>{cat.Name}</li>
+                                <li key={cat.id} onClick={()=>ProductByCategory(cat.id)}>{cat.Name}</li>
                             ))
                         }
                     </ul>
@@ -60,7 +75,7 @@ export default function Products() {
                 <div className={styles.productsSection}>
                     <div className={styles.productsGrid}>
                         {
-                            Products.map((product) => (
+                            Products ? Products.map((product) => (
                                 <div className={styles.productCard} key={product._id}>
                                     <div className={styles.productImageContainer}>
                                         <img
@@ -79,7 +94,11 @@ export default function Products() {
                                         <h3 className={styles.productPrice}>{product.Price}$</h3>
                                     </div>
                                 </div>
-                            ))
+                            )) : (
+                            <div className={styles.notcategory}>
+                                <h1>Ther'es no products in this category</h1>
+                            </div>
+                            )
                         }
                     </div>
                 </div>

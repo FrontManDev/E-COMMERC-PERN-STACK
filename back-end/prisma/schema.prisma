@@ -28,21 +28,25 @@ model Users {
   ProfileImage String
   Role         UserRole   @default(USER)
   Status       UserStatus @default(OFFLINE)
+  Cart         Cart?
+  Wishlist     Wishlist?
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @default(now()) @updatedAt
 }
 
 model Products {
-  id          String    @id @default(uuid())
-  Name        String
-  Description String
-  Price       Float
-  Quantity    Int
-  Category    Category @relation(fields: [categoryId], references: [id])
-  categoryId  String
+  id            String         @id @default(uuid())
+  Name          String
+  Description   String
+  Price         Float
+  Quantity      Int
+  Category      Category       @relation(fields: [categoryId], references: [id])
+  categoryId    String
+  CartItem      CartItem[]
   ProductsImage String
-  createdAt   DateTime  @default(now())
-  updatedAt   DateTime  @default(now())
+  WishlistItem  WishlistItem[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @default(now())
 }
 
 model Category {
@@ -51,4 +55,42 @@ model Category {
   Products  Products[]
   createdAt DateTime   @default(now())
   updatedAt DateTime   @default(now())
+}
+
+model Cart {
+  id        String     @id @default(uuid())
+  User      Users      @relation(fields: [UserId], references: [id])
+  UserId    String     @unique
+  CartItem  CartItem[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @default(now())
+}
+
+model CartItem {
+  id        String   @id @default(uuid())
+  Products  Products @relation(fields: [ProductId], references: [id])
+  ProductId String
+  Cart      Cart     @relation(fields: [CartId], references: [id])
+  CartId    String
+
+  @@unique([ProductId, CartId])
+}
+
+model Wishlist {
+  id           String         @id @default(uuid())
+  User         Users          @relation(fields: [UserId], references: [id])
+  UserId       String         @unique
+  WishlistItem WishlistItem[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @default(now())
+}
+
+model WishlistItem {
+  id         String    @id @default(uuid())
+  Wishlist   Wishlist  @relation(fields: [WishlistId], references: [id])
+  WishlistId String
+  Products   Products @relation(fields: [productsId], references: [id])
+  productsId String
+
+  @@unique([productsId, WishlistId])
 }

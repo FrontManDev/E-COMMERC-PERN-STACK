@@ -31,7 +31,7 @@ export default function SideBar() {
                 <NavLink to="/admin/Products" className={({ isActive }) => (isActive ? style.active : null)}><li><MdOutlineProductionQuantityLimits />Products</li></NavLink>
                 <NavLink to="/admin/Category" className={({ isActive }) => (isActive ? style.active : null)}><li>< MdCategory />Category</li></NavLink>
                 <NavLink to="/admin/Orders" className={({ isActive }) => (isActive ? style.active : null)}><li><FaShippingFast />Orders</li></NavLink>
-                <NavLink to="/User" className={({ isActive }) => (isActive ? style.active : null)}><li><FaStoreAlt />Go to Store</li></NavLink>
+                <NavLink to="/Store" className={({ isActive }) => (isActive ? style.active : null)}><li><FaStoreAlt />Go to Store</li></NavLink>
             </ul>
             <button className={style.button} onClick={() => {
                 localStorage.removeItem("token");
