@@ -53,6 +53,24 @@ const productbycategory = require('./route/productsRoute/ProductsbycategoryRoute
 const refrechtoken = require('./route/RefreshtokenRoute');
 //activate logout route
 const logout = require('./route/LogoutRoute');
+//activate the add to cart route 
+const AddToCart = require('./route/CartRoute/AddToCartRoute');
+//activate the delete from cart route
+const DeleteFromCart = require('./route/CartRoute/DeleteCartRoute');
+//activate the AllCartItem 
+const AllCartItem = require('./route/CartRoute/GetAllCartRoute');
+// Activate the add to wishlist route
+const AddToWishList = require('./route/WishlistRoute/AddToWishList');
+// Activate the delete from wishlist route
+const DeleteFromWishList = require('./route/WishlistRoute/DeleteFromWishList');
+// Activate the get all wishlist items route
+const GetAllWishList = require('./route/WishlistRoute/GetAllWishList');
+app.use('/api',AddToWishList);
+app.use('/api',DeleteFromWishList);
+app.use('/api',GetAllWishList);
+app.use('/api',AllCartItem);
+app.use('/api',DeleteFromCart);
+app.use('/api',AddToCart);
 app.use('/api',logout);
 app.use('/api',refrechtoken);
 app.use('/api',productbycategory);
