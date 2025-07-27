@@ -73,7 +73,7 @@ model CartItem {
   Cart      Cart     @relation(fields: [CartId], references: [id])
   CartId    String
 
-  @@unique([ProductId, CartId])
+  @@unique([ProductId, CartId],name: "ProductId_CartId")
 }
 
 model Wishlist {
@@ -92,5 +92,5 @@ model WishlistItem {
   Products   Products @relation(fields: [productsId], references: [id])
   productsId String
 
-  @@unique([productsId, WishlistId])
+  @@unique([productsId, WishlistId],name: "ProductId_WishlistId")
 }
