@@ -26,7 +26,7 @@ export default function Header() {
         </li>
       </ul>
       <div className={styles.actions}>
-        <NavLink to='/Cart'><span><FiShoppingCart /><sup>0</sup></span></NavLink>
+        <NavLink to='/Store/Cart'><span><FiShoppingCart /><sup>0</sup></span></NavLink>
         <NavLink to='/'><span><FiUser /> Login</span></NavLink>
       </div>
       <div className={styles.menu}>

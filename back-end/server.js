@@ -60,11 +60,11 @@ const DeleteFromCart = require('./route/CartRoute/DeleteCartRoute');
 //activate the AllCartItem 
 const AllCartItem = require('./route/CartRoute/GetAllCartRoute');
 // Activate the add to wishlist route
-const AddToWishList = require('./route/WishlistRoute/AddToWishList');
+const AddToWishList = require('./route/WishListRoute/AddtoWishList');
 // Activate the delete from wishlist route
-const DeleteFromWishList = require('./route/WishlistRoute/DeleteFromWishList');
+const DeleteFromWishList = require('./route/WishListRoute/DeletefromWishList');
 // Activate the get all wishlist items route
-const GetAllWishList = require('./route/WishlistRoute/GetAllWishList');
+const GetAllWishList = require('./route/WishListRoute/GetAllWishList');
 app.use('/api',AddToWishList);
 app.use('/api',DeleteFromWishList);
 app.use('/api',GetAllWishList);
