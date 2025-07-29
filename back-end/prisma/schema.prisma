@@ -72,8 +72,9 @@ model CartItem {
   ProductId String
   Cart      Cart     @relation(fields: [CartId], references: [id])
   CartId    String
+  Quantity  Int      @default(1)
 
-  @@unique([ProductId, CartId],name: "ProductId_CartId")
+  @@unique([ProductId, CartId], name: "ProductId_CartId")
 }
 
 model Wishlist {
@@ -86,11 +87,12 @@ model Wishlist {
 }
 
 model WishlistItem {
-  id         String    @id @default(uuid())
-  Wishlist   Wishlist  @relation(fields: [WishlistId], references: [id])
+  id         String   @id @default(uuid())
+  Wishlist   Wishlist @relation(fields: [WishlistId], references: [id])
   WishlistId String
   Products   Products @relation(fields: [productsId], references: [id])
   productsId String
+  Quantity   Int      @default(1)
 
-  @@unique([productsId, WishlistId],name: "ProductId_WishlistId")
+  @@unique([productsId, WishlistId], name: "ProductId_WishlistId")
 }

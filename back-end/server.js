@@ -65,6 +65,12 @@ const AddToWishList = require('./route/WishListRoute/AddtoWishList');
 const DeleteFromWishList = require('./route/WishListRoute/DeletefromWishList');
 // Activate the get all wishlist items route
 const GetAllWishList = require('./route/WishListRoute/GetAllWishList');
+// Activate the minus from cart route
+const MinuseFromCart = require('./route/CartRoute/MinusCartRoute');
+// Activate the minus from wishlist route
+const MinuseFromWishList = require('./route/WishListRoute/MinuseWishListRoute');
+app.use('/api',MinuseFromWishList);
+app.use('/api',MinuseFromCart);
 app.use('/api',AddToWishList);
 app.use('/api',DeleteFromWishList);
 app.use('/api',GetAllWishList);

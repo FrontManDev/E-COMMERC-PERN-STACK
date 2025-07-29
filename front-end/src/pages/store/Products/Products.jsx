@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import styles from './Products.module.css';
+import { jwtDecode } from 'jwt-decode';
 import AxiosInstance from '../../../axiosInterceptore/axiosInterceptoreToken';
 import { FiShoppingCart } from 'react-icons/fi';
 import { MdOutlineFavoriteBorder } from "react-icons/md";
@@ -17,6 +18,19 @@ export default function Products() {
         } catch (error) {
             SetError(error.message);
         } finally {
+            SetLoading(false);
+        }
+    }
+    async function AddToCart(id) {
+        try{
+            const response = await AxiosInstance.post('/addtocart',{
+                ProductId:id,
+                UserId: jwtDecode(localStorage.getItem('token')).id
+            });
+            console.log(response);
+        }catch(error){
+            SetError(error.message);
+        }finally{
             SetLoading(false);
         }
     }
@@ -84,7 +98,7 @@ export default function Products() {
                                             alt={product.Name}
                                         />
                                         <div className={styles.productActions}>
-                                            <button className={styles.actionButton}><FiShoppingCart /></button>
+                                            <button className={styles.actionButton} onClick={()=>AddToCart(product.id)}><FiShoppingCart /></button>
                                             <button className={styles.actionButton}><MdOutlineFavoriteBorder /></button>
                                             <button className={styles.actionButton}><FaRegEye /></button>
                                         </div>
