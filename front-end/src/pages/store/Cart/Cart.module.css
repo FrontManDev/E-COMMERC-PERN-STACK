@@ -43,6 +43,22 @@
 .Cart .CartContainer .CartProduct .CartItem .ImageContainer {
     width: 200px;
     order: 1;
+    position: relative;
+}
+
+.Cart .CartContainer .CartProduct .CartItem .ImageContainer .icon{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+    height: 30px;
+    color: red;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.Cart .CartContainer .CartProduct .CartItem .ImageContainer .icon:hover{
+    transform: scale(1.3);
 }
 
 .Cart .CartContainer .CartProduct .CartItem .CartItemInfo {

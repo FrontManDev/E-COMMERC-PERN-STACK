@@ -1,10 +1,33 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiShoppingCart, FiUser, FiMenu } from 'react-icons/fi';
 import { IoIosClose } from "react-icons/io";
 import styles from './header.module.css';
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { jwtDecode } from 'jwt-decode';
+import { SetCartItems } from '../../redux/slices/cartSlice';
+import { MdOutlineFavoriteBorder } from "react-icons/md";
+import AxiosInstance from '../../axiosInterceptore/axiosInterceptoreToken';
 export default function Header() {
+  const dispatch = useDispatch();
+  const count = useSelector(state => state.cart.count);
   const [Show, SetShow] = useState(false);
+  async function fetchCart() {
+    try {
+      const token = localStorage.getItem('token');
+      if (!token) return;
+
+      const userId = jwtDecode(token).id;
+      const res = await AxiosInstance.get(`/Allcartitem/${userId}`);
+      dispatch(SetCartItems(res.data.ProdcutInCartItem));
+    } catch (err) {
+      console.error('Failed to fetch cart items:', err);
+    }
+  };
+  useEffect(() => {
+    fetchCart();
+  }, []);
   return (
     <header className={styles.header}>
       <h2>E-Shope</h2>
@@ -26,7 +49,8 @@ export default function Header() {
         </li>
       </ul>
       <div className={styles.actions}>
-        <NavLink to='/Store/Cart'><span><FiShoppingCart /><sup>0</sup></span></NavLink>
+        <NavLink to='/Store/Wishlist'><span><MdOutlineFavoriteBorder /><sup>0</sup></span></NavLink>
+        <NavLink to='/Store/Cart'><span><FiShoppingCart /><sup>{count}</sup></span></NavLink>
         <NavLink to='/'><span><FiUser /> Login</span></NavLink>
       </div>
       <div className={styles.menu}>

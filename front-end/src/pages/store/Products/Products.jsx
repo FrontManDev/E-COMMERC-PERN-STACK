@@ -5,7 +5,10 @@ import AxiosInstance from '../../../axiosInterceptore/axiosInterceptoreToken';
 import { FiShoppingCart } from 'react-icons/fi';
 import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa6";
+import { useDispatch } from 'react-redux';
+import { SetCartItems } from '../../../redux/slices/cartSlice';
 export default function Products() {
+    const dispatch = useDispatch();
     const [Category, SetCategory] = useState([]);
     const [Products, SetProducts] = useState([]);
     const [Loading, SetLoading] = useState(false);
@@ -22,15 +25,17 @@ export default function Products() {
         }
     }
     async function AddToCart(id) {
-        try{
-            const response = await AxiosInstance.post('/addtocart',{
-                ProductId:id,
+        try {
+            const response = await AxiosInstance.post('/addtocart', {
+                ProductId: id,
                 UserId: jwtDecode(localStorage.getItem('token')).id
             });
             console.log(response);
-        }catch(error){
+            const cartResponse = await AxiosInstance.get(`/Allcartitem/${jwtDecode(localStorage.getItem('token')).id}`);
+            dispatch(SetCartItems(cartResponse.data.ProdcutInCartItem));
+        } catch (error) {
             SetError(error.message);
-        }finally{
+        } finally {
             SetLoading(false);
         }
     }
@@ -70,10 +75,10 @@ export default function Products() {
             <div className={styles.heroProducts}>
                 <div className={styles.categoriesSection}>
                     <ul className={styles.categoryList}>
-                        <li onClick={()=>AllProducts()}>All</li>
+                        <li onClick={() => AllProducts()}>All</li>
                         {
                             Category.map((cat) => (
-                                <li key={cat.id} onClick={()=>ProductByCategory(cat.id)}>{cat.Name}</li>
+                                <li key={cat.id} onClick={() => ProductByCategory(cat.id)}>{cat.Name}</li>
                             ))
                         }
                     </ul>
@@ -98,7 +103,7 @@ export default function Products() {
                                             alt={product.Name}
                                         />
                                         <div className={styles.productActions}>
-                                            <button className={styles.actionButton} onClick={()=>AddToCart(product.id)}><FiShoppingCart /></button>
+                                            <button className={styles.actionButton} onClick={() => AddToCart(product.id)}><FiShoppingCart /></button>
                                             <button className={styles.actionButton}><MdOutlineFavoriteBorder /></button>
                                             <button className={styles.actionButton}><FaRegEye /></button>
                                         </div>
@@ -109,9 +114,9 @@ export default function Products() {
                                     </div>
                                 </div>
                             )) : (
-                            <div className={styles.notcategory}>
-                                <h1>Ther'es no products in this category</h1>
-                            </div>
+                                <div className={styles.notcategory}>
+                                    <h1>Ther'es no products in this category</h1>
+                                </div>
                             )
                         }
                     </div>

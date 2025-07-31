@@ -21,10 +21,13 @@ const DeleteFromCart = async (req, res) => {
 
         const DeleteCartItem = await prisma.cartItem.delete({
             where: {
-                CartId: cart.id
+                ProductId_CartId: {
+                    ProductId: ProductId,
+                    CartId: cart.id
+                }
             }
         });
-
+        
         if(!DeleteCartItem){
             return res.status(500).json({message:"faild of delting the Item"});
         }

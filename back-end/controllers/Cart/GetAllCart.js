@@ -24,10 +24,10 @@ const GetAllCart = async (req, res) => {
             return res.status(500).json({ message: "cartItem not found" });
         }
 
-        const ProductsId = CartItem.map((item)=>item.ProductId);
-        const Products = await prisma.Products.findMany({
+        const ProductsId = CartItem.map((item) => item.ProductId);
+        const Products = await prisma.products.findMany({
             where: {
-                id:{in:ProductsId} 
+                id: { in: ProductsId }
             }
         });
 
@@ -35,10 +35,12 @@ const GetAllCart = async (req, res) => {
             return res.status(500).json({ message: "Product not found" });
         }
 
-        return res.status(200).json({message:"all the products of the cart is ",Products:Products})
+        const ProdcutInCartItem = Products.map((product) => { return { ...product, QuantityInCart: CartItem.find((item) => product.id === item.ProductId) ? CartItem.find((item) => product.id === item.ProductId).Quantity : 0 } });
+        
+        return res.status(200).json({ message: "all the products of the cart is ", ProdcutInCartItem: ProdcutInCartItem })
     } catch (error) {
         return res.status(500).json({ Error: error.message });
     }
 }
 
-module.exports ={ GetAllCart};
+module.exports = { GetAllCart };
