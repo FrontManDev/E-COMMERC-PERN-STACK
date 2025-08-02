@@ -5,6 +5,7 @@ import Cart from "../pages/store/Cart/Cart";
 import Orders from "../pages/admin/Orders/Oders";
 import ContactUs from "../pages/store/ContactUs/ContactUs";
 import WishList from "../pages/store/WishList/WishList";
+import DetailsProducts from "../pages/store/DetailsProducts/DetailsProducts";
 export default function StoreRoute(){
     return(
         <Routes>
@@ -14,6 +15,7 @@ export default function StoreRoute(){
             <Route path="/Cart" element={<Cart/>}/>
             <Route path="/Wishlist" element={<WishList/>}/>
             <Route path="/Orders" element={<Orders/>}/>
+            <Route path="/DetailsProduct/:id" element={<DetailsProducts/>}></Route>
         </Routes>
     );
 }

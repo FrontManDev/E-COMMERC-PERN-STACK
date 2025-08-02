@@ -8,14 +8,12 @@ const AddToWishList = async (req, res) => {
             return res.status(400).json({ message: "bad request: ProductId and UserId are required" });
         }
 
-        // تحقق هل توجد Wishlist مسبقًا لهذا المستخدم
         let wishlist = await prisma.wishlist.findUnique({
             where: {
                 UserId: UserId
             }
         });
 
-        // إذا لم توجد، أنشئ Wishlist جديدة
         if (!wishlist) {
             wishlist = await prisma.wishlist.create({
                 data: {
@@ -28,7 +26,6 @@ const AddToWishList = async (req, res) => {
             }
         }
 
-        // تحقق هل المنتج مضاف بالفعل إلى Wishlist
         const existingItem = await prisma.wishlistItem.findUnique({
             where: {
                 ProductId_WishlistId: {

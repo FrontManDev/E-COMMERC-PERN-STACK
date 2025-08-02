@@ -27,7 +27,7 @@ const GetAllWishList = async (req, res) => {
             return res.status(404).json({ message: "No items found in wishlist" });
         }
 
-        const productsIds = wishlistItems.map((item) => item.ProductId);
+        const productsIds = wishlistItems.map((item) => item.productsId);
 
         const products = await prisma.products.findMany({
             where: {
@@ -43,7 +43,7 @@ const GetAllWishList = async (req, res) => {
 
         return res.status(200).json({
             message: "All products in the wishlist:",
-            products: products
+            WishListProducts: products
         });
     } catch (error) {
         return res.status(500).json({ Error: error.message });

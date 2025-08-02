@@ -20,10 +20,11 @@ const DeleteFromWishList = async (req, res) => {
 
         const deletedItem = await prisma.wishlistItem.deleteMany({
             where: {
-                WishListId: wishlist.id,
-                ProductId: ProductId
+                WishlistId: wishlist.id,
+                productsId: ProductId          
             }
         });
+
 
         if (deletedItem.count === 0) {
             return res.status(404).json({ message: "item not found in wishlist" });

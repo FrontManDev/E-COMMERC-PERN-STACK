@@ -11,7 +11,8 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import AxiosInstance from '../../axiosInterceptore/axiosInterceptoreToken';
 export default function Header() {
   const dispatch = useDispatch();
-  const count = useSelector(state => state.cart.count);
+  const Cartcount = useSelector(state => state.cart.count);
+  const WishListCount = useSelector(state => state.wishlist.count);
   const [Show, SetShow] = useState(false);
   async function fetchCart() {
     try {
@@ -49,8 +50,8 @@ export default function Header() {
         </li>
       </ul>
       <div className={styles.actions}>
-        <NavLink to='/Store/Wishlist'><span><MdOutlineFavoriteBorder /><sup>0</sup></span></NavLink>
-        <NavLink to='/Store/Cart'><span><FiShoppingCart /><sup>{count}</sup></span></NavLink>
+        <NavLink to='/Store/Wishlist'><span><MdOutlineFavoriteBorder /><sup>{WishListCount}</sup></span></NavLink>
+        <NavLink to='/Store/Cart'><span><FiShoppingCart /><sup>{Cartcount}</sup></span></NavLink>
         <NavLink to='/'><span><FiUser /> Login</span></NavLink>
       </div>
       <div className={styles.menu}>

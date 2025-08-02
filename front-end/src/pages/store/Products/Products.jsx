@@ -7,6 +7,8 @@ import { MdOutlineFavoriteBorder } from "react-icons/md";
 import { FaRegEye } from "react-icons/fa6";
 import { useDispatch } from 'react-redux';
 import { SetCartItems } from '../../../redux/slices/cartSlice';
+import {Add} from '../../../redux/slices/wishlistSlice';
+import { NavLink } from 'react-router-dom';
 export default function Products() {
     const dispatch = useDispatch();
     const [Category, SetCategory] = useState([]);
@@ -16,7 +18,7 @@ export default function Products() {
     async function AllCategory() {
         try {
             SetLoading(true);
-            const response = await AxiosInstance.get('http://localhost:5000/api/allcategory');
+            const response = await AxiosInstance.get('/allcategory');
             SetCategory(response.data.category);
         } catch (error) {
             SetError(error.message);
@@ -42,7 +44,7 @@ export default function Products() {
     async function AllProducts() {
         try {
             SetLoading(true);
-            const response = await AxiosInstance.get('http://localhost:5000/api/allproducts');
+            const response = await AxiosInstance.get('/allproducts');
             SetProducts(response.data.allproduct);
             console.log(response.data.allproduct);
         } catch (error) {
@@ -55,7 +57,7 @@ export default function Products() {
     async function ProductByCategory(id) {
         try {
             SetLoading(true);
-            const response = await AxiosInstance.get(`http://localhost:5000/api/proudctbycategory/${id}`);
+            const response = await AxiosInstance.get(`/proudctbycategory/${id}`);
             console.log(response);
             SetProducts(response.data.product);
         } catch (error) {
@@ -66,6 +68,16 @@ export default function Products() {
 
     }
 
+    async function AddToWishList(ProductId) {
+        try{
+            SetLoading(true);
+            const response = await AxiosInstance.post('/addtowishlist',{ProductId, UserId:jwtDecode(localStorage.getItem('token')).id});
+            console.log(response);
+            dispatch(Add());
+        }catch(error){
+            SetError(error.message);
+        }
+    }
     useEffect(() => {
         AllCategory();
         AllProducts();
@@ -104,8 +116,8 @@ export default function Products() {
                                         />
                                         <div className={styles.productActions}>
                                             <button className={styles.actionButton} onClick={() => AddToCart(product.id)}><FiShoppingCart /></button>
-                                            <button className={styles.actionButton}><MdOutlineFavoriteBorder /></button>
-                                            <button className={styles.actionButton}><FaRegEye /></button>
+                                            <button className={styles.actionButton} onClick={()=>AddToWishList(product.id)} ><MdOutlineFavoriteBorder /></button>
+                                            <NavLink to={`/Store/DetailsProduct/${product.id}`}><button className={styles.actionButton} > <FaRegEye /></button></NavLink>
                                         </div>
                                     </div>
                                     <div className={styles.productInfo}>

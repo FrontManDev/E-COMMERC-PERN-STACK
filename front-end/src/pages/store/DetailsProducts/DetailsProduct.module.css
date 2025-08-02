@@ -1,0 +1,103 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    padding: 30px 100px;
+    display: flex;
+    gap: 30px;
+}
+
+.container .imageSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 50%;
+}
+
+.container .imageSection .thumbnails {
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.container .imageSection .thumbnails .thumbnail {
+    width: 100px;
+    cursor: pointer;
+}
+
+.container .detailsSection{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 25px;
+}
+
+.container .detailsSection h2{
+    font-size: 1.2rem;
+    padding-bottom: 10px;
+    border-bottom: 1px solid black;
+}
+
+.container .detailsSection .description{
+    font-size: 1.1rem;
+    color: grey;
+    margin-bottom: 10px;
+}
+
+.container .detailsSection .price {
+    font-size: 1.5rem;
+    color: #007bff;
+    font-weight: bold;
+}
+
+.container .detailsSection .quantity {
+    font-size: 1rem;
+    color: #555;
+}
+
+.container .detailsSection .buttons {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.container .detailsSection .cartBtn,
+.container .detailsSection .favBtn {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.container .detailsSection .cartBtn {
+    background-color: #28a745;
+    color: white;
+}
+
+.container .detailsSection .cartBtn:hover {
+    background-color: #218838;
+}
+
+.container .detailsSection .favBtn {
+    background-color: #ffc107;
+    color: black;
+}
+
+.container .detailsSection .favBtn:hover {
+    background-color: #e0a800;
+}
+
+.container .imageSection .mainImage {
+    width: 100%;
+    max-width: 450px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
